@@ -2,365 +2,311 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ORAJIN · Règlement - Orajin Community</title>
+  <title>ORAJIN · Règlement</title>
   <style>
     :root {
-      --bg-main: #09090b;
-      --bg-card: #18181b;
-      --border: #27272a;
-      --text-main: #f4f4f5;
-      --text-muted: #a1a1aa;
-      
-      /* Couleur d'accentuation VIOLETTE à la place du jaune */
-      --accent: #a855f7;
-      --accent-hover: #c084fc;
-      
-      /* Badges de gravité (Modérée passe en VIOLET) */
-      --info: #1e3a8a; --info-text: #93c5fd;
-      --warn: #581c87; --warn-text: #e9d5ff; /* Violet */
-      --severe: #9a3412; --severe-text: #fdba74;
-      --critical: #991b1b; --critical-text: #fca5a5;
+      /* Palette Violette */
+      --accent-violet: #a855f7;      /* Violet vif principal */
+      --accent-violet-glow: #9333ea; /* Violet plus sombre pour ombres/dégradés */
+      --bg-dark: #09090b;           /* Fond ultra sombre */
+      --card-bg: #121215;           /* Fond des cartes */
+      --border-color: #27272a;      /* Bordures discrètes */
+      --text-muted: #a1a1aa;        /* Texte secondaire */
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      font-family: system-ui, -apple-system, sans-serif;
-      margin: 0;
-      display: flex;
+      background-color: var(--bg-dark);
+      color: #ffffff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
-    /* Menu latéral */
-    nav {
-      width: 280px;
-      height: 100vh;
-      position: sticky;
-      top: 0;
-      border-right: 1px solid var(--border);
-      padding: 24px;
-      overflow-y: auto;
-      background-color: var(--bg-main);
+    /* --- NAVBAR --- */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      border-bottom: 1px solid var(--border-color);
     }
 
     .brand {
-      font-size: 1.2rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-      color: var(--accent);
-      margin-bottom: 24px;
-      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
     }
 
-    nav h2 {
+    .brand-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--accent-violet), var(--accent-violet-glow));
+      border-radius: 6px;
+      box-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
+    }
+
+    .brand-text {
       font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--text-muted);
-      margin: 20px 0 10px 0;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
 
-    nav ul { list-style: none; padding: 0; margin: 0; }
-    nav li { margin-bottom: 8px; }
-    nav a {
+    .brand-text span {
+      color: var(--accent-violet);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
       font-size: 0.9rem;
       transition: color 0.2s;
     }
-    nav a:hover { color: var(--accent); }
 
-    /* Zone principale */
-    main {
-      flex: 1;
-      padding: 40px;
-      max-width: 960px;
+    .nav-links a:hover {
+      color: #fff;
     }
 
-    .header-section {
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 20px;
-      margin-bottom: 30px;
-    }
-
-    .header-section h1 {
-      font-size: 2rem;
-      margin: 0 0 10px 0;
-      color: var(--text-main);
-    }
-
-    .header-section p {
-      color: var(--text-muted);
-      margin: 0;
-      font-size: 1rem;
-    }
-
-    /* Carte de Règle */
-    .rule-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 16px;
-    }
-
-    .rule-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-
-    .rule-id {
-      font-weight: 700;
-      color: var(--text-muted);
+    .btn-discord {
+      background: linear-gradient(135deg, #a855f7, #7e22ce);
+      color: #fff;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
       font-size: 0.9rem;
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
     }
 
-    /* Badges */
-    .badge {
+    /* --- HERO SECTION --- */
+    .hero {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+
+    .badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid var(--border-color);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
       font-size: 0.75rem;
-      padding: 3px 8px;
-      border-radius: 4px;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .dot-violet {
+      width: 6px;
+      height: 6px;
+      background-color: var(--accent-violet);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-violet);
+    }
+
+    /* Titre ORAJIN en dégradé violet */
+    .hero-title {
+      font-size: 5rem;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: 2px;
+      background: linear-gradient(180deg, #ffffff 30%, var(--accent-violet) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 2.5rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      letter-spacing: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-description {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-violet), #7e22ce);
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
       font-weight: 600;
     }
 
-    .badge-info { background: var(--info); color: var(--info-text); }
-    .badge-warn { background: var(--warn); color: var(--warn-text); } /* Violet */
-    .badge-severe { background: var(--severe); color: var(--severe-text); }
-    .badge-critical { background: var(--critical); color: var(--critical-text); }
-    .tag { background: #27272a; color: var(--accent); }
-
-    h2.section-title {
-      font-size: 1.4rem;
-      color: var(--accent);
-      margin: 40px 0 20px 0;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 8px;
+    /* --- LAYOUT CONTENU + SIDEBAR --- */
+    .main-container {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-top: 1px solid var(--border-color);
     }
 
-    h3 { margin: 0 0 10px 0; font-size: 1.1rem; }
-    p { color: #d4d4d8; line-height: 1.6; margin: 0 0 10px 0; font-size: 0.95rem; }
-    ul { margin: 0 0 10px 0; padding-left: 20px; color: #d4d4d8; }
-    li { margin-bottom: 4px; line-height: 1.5; }
+    /* Sidebar fixe avec ligne violette active */
+    .sidebar {
+      width: 280px;
+      padding: 2rem 1rem;
+      border-right: 2px solid var(--accent-violet); /* Séparateur violet */
+    }
 
-    /* Tableaux */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 15px 0;
+    .sidebar h4 {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .sidebar nav a {
+      display: block;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.6rem 1rem;
       font-size: 0.9rem;
+      border-radius: 6px;
+      margin-bottom: 0.25rem;
     }
 
-    th, td {
-      border: 1px solid var(--border);
-      padding: 10px;
-      text-align: left;
+    .sidebar nav a.active {
+      background-color: #18181b;
+      color: #fff;
+      border-left: 3px solid var(--accent-violet);
     }
 
-    th { background: #27272a; color: var(--text-main); }
-    td { background: var(--bg-card); color: #d4d4d8; }
+    /* Cards de contenu */
+    .content {
+      flex: 1;
+      padding: 2rem 3rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .card-tag {
+      font-size: 0.7rem;
+      color: var(--accent-violet);
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Menu de gauche -->
-  <nav>
-    <div class="brand">ORAJIN · RÈGLEMENT</div>
-    
-    <h2>Introduction</h2>
-    <ul>
-      <li><a href="#intro">00 · Cadre Général</a></li>
-    </ul>
-
-    <h2>Règlement RP</h2>
-    <ul>
-      <li><a href="#rp-cadre">01 · Cadre Général</a></li>
-      <li><a href="#rp-equipement">02 · Équipement & Masques</a></li>
-      <li><a href="#rp-captures">03 · Captures & Scènes</a></li>
-    </ul>
-
-    <h2>Règlement HRP</h2>
-    <ul>
-      <li><a href="#hrp-base">01 · Principes HRP</a></li>
-    </ul>
-  </nav>
-
-  <!-- Contenu Principal -->
-  <main>
-    
-    <div class="header-section">
-      <h1>ORAJIN · Règlement officiel</h1>
-      <p>Le cadre complet de la communauté ORAJIN : règlement RP et HRP, procédures, scènes sensibles et sanctions. Une référence écrite pour être lue, citée et appliquée.</p>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="brand">
+      <div class="brand-icon"></div>
+      <div class="brand-text">ORAJIN · <span>RÈGLEMENT</span></div>
     </div>
+    <ul class="nav-links">
+      <li><a href="#">Introduction</a></li>
+      <li><a href="#">RP</a></li>
+      <li><a href="#">HRP</a></li>
+      <li><a href="#">Important</a></li>
+      <li><a href="#" class="btn-discord">Discord ↗</a></li>
+    </ul>
+  </header>
 
-    <!-- INTRODUCTION -->
-    <h2 class="section-title" id="intro">00 · Introduction</h2>
-    <div class="rule-card">
-      <p><strong>Règle d'or :</strong> Tu joues d'abord la scène, tu contestes ensuite avec la bonne procédure et les preuves nécessaires. Toute contestation se fait après la scène, jamais pendant.</p>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="badge-top">
+      <span class="dot-violet"></span> RÈGLEMENT OFFICIEL
     </div>
+    <h1 class="hero-title">ORAJIN</h1>
+    <h2 class="hero-subtitle">· Règlement</h2>
+    <p class="hero-description">
+      Le cadre complet de la communauté ORAJIN : règlement RP et HRP, procédures, scènes sensibles, sanctions.
+    </p>
+    <div class="hero-buttons">
+      <a href="#" class="btn-primary">Commencer la lecture →</a>
+      <a href="#" class="btn-secondary">Index des règles</a>
+    </div>
+  </section>
 
-    <!-- PARTIE RP -->
-    <h2 class="section-title" id="rp-cadre">01 · Règlement RP - Cadre Général</h2>
+  <!-- SECTIONS AVEC SIDEBAR ET CARTES -->
+  <div class="main-container">
+    <aside class="sidebar">
+      <h4>SOMMAIRE</h4>
+      <nav>
+        <a href="#" class="active">Introduction</a>
+        <a href="#">Comportement HRP</a>
+        <a href="#">Échanges & transferts</a>
+        <a href="#">Bugs & contournements</a>
+      </nav>
+    </aside>
 
-    <article class="rule-card">
-      <div class="rule-header">
-        <span class="rule-id">Art. 1.1</span>
-        <span class="badge badge-warn">Modérée</span>
-        <span class="badge tag">#scène</span>
-        <span class="badge tag">#présence</span>
+    <main class="content">
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-tag">COMMENT LIRE</div>
+          <h3>Par thèmes</h3>
+          <p>Utilise le sommaire pour parcourir un bloc complet du règlement.</p>
+        </div>
+        <div class="card">
+          <div class="card-tag">AVANT TICKET</div>
+          <h3>Vérifie la règle</h3>
+          <p>Identifie l'article concerné avant toute plainte ou contestation.</p>
+        </div>
       </div>
-      <h3>AFK et présence</h3>
-      <p>Il est interdit de rester AFK volontairement dans une scène RP pour éviter une interaction ou une conséquence.</p>
-      <p>Si tu dois t'absenter : préviens les joueurs concernés et quitte la scène correctement. Un AFK abusif peut entraîner l'annulation de la scène ou une sanction staff.</p>
-    </article>
-
-    <article class="rule-card">
-      <div class="rule-header">
-        <span class="rule-id">Art. 1.2</span>
-        <span class="badge badge-severe">Sévère</span>
-        <span class="badge tag">#bataille</span>
-        <span class="badge tag">#bastion</span>
-      </div>
-      <h3>Bastion</h3>
-      <p>Le bastion est considéré comme le camp adverse : il correspond au village ou point fort du camp ennemi. Sa capture est obligatoire avant toute revendication. La récupération d'un bastion se règle uniquement par négociation ou guerre préparée.</p>
-    </article>
-
-    <article class="rule-card">
-      <div class="rule-header">
-        <span class="rule-id">Art. 1.5</span>
-        <span class="badge badge-severe">Sévère</span>
-        <span class="badge tag">#frontière</span>
-        <span class="badge tag">#RPK</span>
-      </div>
-      <h3>Bastions, pays et frontières</h3>
-      <p>Un bastion est une zone protégée et sensible. Entrer dans un pays ennemi impose une annonce /na RP. L'absence d'annonce expose à une sanction HRP. Une fois en pays adverse, tu es sous un risque RPK constant.</p>
-    </article>
-
-    <article class="rule-card">
-      <div class="rule-header">
-        <span class="rule-id">Art. 1.6</span>
-        <span class="badge badge-info">Info</span>
-        <span class="badge tag">#fairplay</span>
-      </div>
-      <h3>Fairplay</h3>
-      <p>Le fairplay consiste à prendre en compte l'expérience des autres joueurs. S'acharner sur un joueur alors que l'écart de nombre ou de puissance est écrasant est interdit.</p>
-    </article>
-
-    <article class="rule-card">
-      <div class="rule-header">
-        <span class="rule-id">Art. 1.7</span>
-        <span class="badge badge-warn">Modérée</span>
-        <span class="badge tag">#fairplay</span>
-      </div>
-      <h3>WinRP et LoseRP</h3>
-      <p>Le WinRP consiste à vouloir gagner à tout prix. Le LoseRP consiste à accepter une défaite cohérente. Tu ne dois jamais ignorer ton environnement ou tes blessures pour forcer une victoire.</p>
-    </article>
-
-    <article class="rule-card">
-      <div class="rule-header">
-        <span class="rule-id">Art. 1.8</span>
-        <span class="badge badge-warn">Modérée</span>
-        <span class="badge tag">#fairplay</span>
-      </div>
-      <h3>ForceRP</h3>
-      <p>Le ForceRP consiste à imposer une action, un passé ou une situation à d'autres joueurs sans leur laisser de vraie réponse RP.</p>
-    </article>
-
-    <article class="rule-card">
-      <div class="rule-header">
-        <span class="rule-id">Art. 1.9</span>
-        <span class="badge badge-severe">Sévère</span>
-        <span class="badge tag">#meta</span>
-        <span class="badge tag">#HRP</span>
-      </div>
-      <h3>Métagaming</h3>
-      <p>Le métagaming consiste à utiliser en RP des informations obtenues hors RP (Discord, stream, HUD). Il faut une preuve RP crédible pour exploiter une information.</p>
-    </article>
-
-    <!-- PARTIE ÉQUIPEMENT -->
-    <h2 class="section-title" id="rp-equipement">02 · Équipement & Identification</h2>
-
-    <article class="rule-card">
-      <div class="rule-header">
-        <span class="rule-id">Art. 2.1</span>
-        <span class="badge badge-warn">Modérée</span>
-        <span class="badge tag">#équipement</span>
-      </div>
-      <h3>Armes et objets uniques</h3>
-      <p>Il est strictement interdit de dissimuler une arme unique pour éviter d'être identifié. Toute arme en ta possession doit rester visible en permanence.</p>
-    </article>
-
-    <article class="rule-card">
-      <div class="rule-header">
-        <span class="rule-id">Art. 2.3</span>
-        <span class="badge badge-warn">Modérée</span>
-        <span class="badge tag">#identité</span>
-      </div>
-      <h3>Masques</h3>
-      <p>Une personne portant un masque est considérée comme impossible à reconnaître. Exception : si elle donne son nom ou porte une arme unique/artefact de clan.</p>
-    </article>
-
-    <!-- PARTIE CAPTURES -->
-    <h2 class="section-title" id="rp-captures">03 · Captures & Scènes Sensibles</h2>
-
-    <article class="rule-card">
-      <div class="rule-header">
-        <span class="rule-id">Art. 3.1</span>
-        <span class="badge badge-warn">Modérée</span>
-        <span class="badge tag">#capture</span>
-      </div>
-      <h3>Assommer et capturer</h3>
-      <p>Assommer ou capturer un joueur doit se faire dans le respect du RP et de manière logique. Le joueur capturé doit conserver une possibilité de réagir.</p>
-    </article>
-
-    <article class="rule-card">
-      <div class="rule-header">
-        <span class="rule-id">Art. 3.2</span>
-        <span class="badge badge-severe">Sévère</span>
-        <span class="badge tag">#capture</span>
-        <span class="badge tag">#grade</span>
-      </div>
-      <h3>Captures hors batailles</h3>
-      <p>Lors d'une capture ciblée, il est interdit de déployer plus de 3 personnes d'un rang égal ou supérieur à celui de la cible.</p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Grade du joueur</th>
-            <th>Peut capturer</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Chunin</td>
-            <td>Chunin → Tokubetsu Jonin</td>
-          </tr>
-          <tr>
-            <td>Jonin</td>
-            <td>Jonin → Sannin</td>
-          </tr>
-        </tbody>
-      </table>
-    </article>
-
-    <!-- HRP -->
-    <h2 class="section-title" id="hrp-base">01 · Règlement HRP</h2>
-
-    <article class="rule-card">
-      <div class="rule-header">
-        <span class="rule-id">Art. 4.1</span>
-        <span class="badge badge-critical">Critique</span>
-        <span class="badge tag">#comportement</span>
-      </div>
-      <h3>Comportement Hors-RP</h3>
-      <p>Le respect est obligatoire sur l'ensemble des plateformes d'Orajin (Discord, jeu, vocal). Les insultes HRP, le harcèlement et la haine entraînent un bannissement immédiat.</p>
-    </article>
-
-  </main>
+    </main>
+  </div>
 
 </body>
 </html>
