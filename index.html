@@ -3,16 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ORAJIN · Règlement Officiel</title>
   <title>ARKAIA · Règlement Officiel</title>
   <style>
     :root {
       --bg-dark: #070709;
-@@ -18,241 +18,337 @@
+      --card-bg: #0e0e11;
+      --border-color: #1b1b22;
+      --text-muted: #838393;
+      --accent-purple: #a855f7;
+      --purple-glow: rgba(168, 85, 247, 0.25);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     html { scroll-behavior: smooth; }
     body { background-color: var(--bg-dark); color: #ffffff; overflow-x: hidden; }
 
-    /* Header */
     /* Header Nav */
     .navbar {
       display: flex; justify-content: space-between; align-items: center;
@@ -21,66 +26,27 @@
     }
     .brand { display: flex; align-items: center; gap: 0.75rem; font-weight: 700; font-size: 0.8rem; letter-spacing: 1.5px; }
     .brand-icon { width: 22px; height: 22px; background: linear-gradient(135deg, #a855f7, #6b21a8); border-radius: 5px; box-shadow: 0 0 10px var(--accent-purple); }
-    .brand-title { color: #fff; }
-    .brand-subtitle { color: var(--text-muted); font-weight: 400; }
-    
-    .nav-links { display: flex; gap: 2.5rem; align-items: center; list-style: none; }
-    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: #fff; }
-    .btn-discord { background: linear-gradient(135deg, #a855f7, #7e22ce); color: #fff !important; padding: 0.55rem 1.2rem; border-radius: 6px; font-weight: 600; box-shadow: 0 0 15px var(--purple-glow); }
-
-    /* Hero */
-    .hero { max-width: 1100px; margin: 4rem auto 3rem auto; padding: 0 2rem; }
-    .pill-tag { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border-color); padding: 0.35rem 0.85rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 2.5rem; }
-    .pill-dot { width: 6px; height: 6px; background: var(--accent-purple); border-radius: 50%; box-shadow: 0 0 8px var(--accent-purple); }
-    
-    .hero-title {
-      font-size: 6rem; font-weight: 900; line-height: 0.9; letter-spacing: 1px;
-      background: linear-gradient(180deg, #ffffff 45%, var(--accent-purple) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .hero-subtitle { font-size: 2.8rem; color: var(--text-muted); font-weight: 300; letter-spacing: 4px; margin-top: 0.2rem; margin-bottom: 1.5rem; }
-    .hero-description { color: var(--text-muted); font-size: 1.05rem; max-width: 620px; line-height: 1.6; margin-bottom: 2.5rem; }
-    
-    .hero-buttons { display: flex; gap: 1rem; margin-bottom: 3rem; }
-    .btn-main { background: linear-gradient(135deg, var(--accent-purple), #7e22ce); color: #fff; text-decoration: none; padding: 0.85rem 1.75rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 0 20px var(--purple-glow); }
-
-    .date-badge { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border-color); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.8rem; color: var(--text-muted); }
-    .date-badge strong { color: #fff; font-weight: 600; }
     .btn-discord { background: linear-gradient(135deg, #a855f7, #7e22ce); color: #fff !important; padding: 0.55rem 1.2rem; border-radius: 6px; font-weight: 600; text-decoration: none; box-shadow: 0 0 15px var(--purple-glow); }
 
-    /* Layout */
     /* Layout Content */
     .container { display: flex; max-width: 1400px; margin: 0 auto; border-top: 1px solid var(--border-color); }
-
-    /* Sidebar */
+    
     /* Sidebar Layout */
     .sidebar { width: 320px; padding: 2.5rem 1.5rem; border-right: 2px solid var(--accent-purple); height: calc(100vh - 70px); position: sticky; top: 70px; overflow-y: auto; }
-    .sidebar-block { margin-bottom: 2.5rem; }
-    .sidebar-header { display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 1.2rem; text-transform: uppercase; }
     .sidebar-block { margin-bottom: 2rem; }
     .sidebar-header { display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 1rem; text-transform: uppercase; }
 
     .nav-menu { display: flex; flex-direction: column; gap: 0.2rem; }
-    .nav-item { display: flex; align-items: center; gap: 0.85rem; color: var(--text-muted); text-decoration: none; padding: 0.55rem 0.85rem; font-size: 0.85rem; border-radius: 6px; transition: all 0.2s; }
     .nav-item { display: flex; align-items: center; gap: 0.75rem; color: var(--text-muted); text-decoration: none; padding: 0.5rem 0.75rem; font-size: 0.82rem; border-radius: 6px; transition: all 0.2s; }
     .nav-item span { font-size: 0.75rem; font-weight: 600; color: #40404a; font-family: monospace; }
     .nav-item:hover { color: #fff; background: #121216; }
     .nav-item.active { background: #121217; color: #ffffff; border-left: 3px solid var(--accent-purple); box-shadow: -6px 0 16px -3px var(--purple-glow); }
     .nav-item.active span { color: var(--accent-purple); }
 
-    /* Main Content */
     /* Main Content Area */
     .main-content { flex: 1; padding: 2.5rem 3.5rem; }
     .rule-section { margin-bottom: 4rem; scroll-margin-top: 90px; }
-    .content-header { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; color: var(--accent-purple); margin-bottom: 0.5rem; }
-    .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem; letter-spacing: -0.5px; }
 
-    .grid-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; margin-bottom: 2rem; }
-    .info-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.5rem; }
-    .card-tag { font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.75rem; }
-    .info-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; }
-    .info-card p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; }
     /* Intro Boxes & Cards */
     .intro-box { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 2rem; margin-bottom: 2rem; }
     .severity-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
@@ -95,14 +61,6 @@
     .theme-desc { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem; }
 
     /* Rule Cards */
-    .rule-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.2rem; }
-    .rule-card-header { display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; }
-    .badge-art { background: rgba(255,255,255,0.05); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--border-color); }
-    .badge-severity { font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase; }
-    .badge-moderate { background: #9333ea; color: #fff; }
-    .badge-severe { background: #dc2626; color: #fff; }
-    .badge-critical { background: #7f1d1d; color: #fca5a5; border: 1px solid #ef4444; }
-    .badge-tag-grey { background: #18181b; color: var(--text-muted); font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase; }
     .rule-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.75rem; margin-bottom: 1.5rem; }
     .rule-card-header { display: flex; gap: 0.6rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; }
     .badge-art { background: rgba(255,255,255,0.05); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 4px; border: 1px solid var(--border-color); }
@@ -112,63 +70,34 @@
     .badge-severe { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
     .badge-critique { background: rgba(220, 38, 38, 0.25); color: #ef4444; border: 1px solid rgba(220, 38, 38, 0.5); font-weight: 800; }
     .badge-tag-grey { background: #141418; color: var(--text-muted); font-size: 0.65rem; font-weight: 600; padding: 0.25rem 0.6rem; border-radius: 4px; }
-
-    .rule-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; color: #fff; }
-    .rule-card p { color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; }
-    .rule-card ul { margin-left: 1.2rem; margin-top: 0.5rem; color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; }
+    
     .rule-card h3 { font-size: 1.3rem; font-weight: 800; color: #fff; }
     .rule-card p { color: #d4d4d8; font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.8rem; }
     .rule-card ul { margin-left: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.8rem; color: #d4d4d8; font-size: 0.95rem; line-height: 1.6; }
     .rule-card ul li { margin-bottom: 0.3rem; }
     .rule-card ul li::marker { color: var(--accent-purple); }
 
-    /* Critical Grid */
-    .critical-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 1rem; }
-    .critical-item { background: rgba(220, 38, 38, 0.05); border: 1px solid rgba(220, 38, 38, 0.2); border-radius: 8px; padding: 1rem; }
-    .critical-item strong { color: #ef4444; font-size: 0.95rem; }
-    .critical-item p { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem; }
+    .sub-article { margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+    .sub-article h4 { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.6rem; }
 
-    /* Staff Grid */
-    .staff-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
-    .staff-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.2rem; }
-    .staff-card h4 { color: var(--accent-purple); font-size: 1rem; margin-bottom: 0.2rem; }
-    .staff-card .role-title { font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
-    .staff-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; }
+    /* Tables */
+    .rp-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
+    .rp-table th, .rp-table td { border: 1px solid var(--border-color); padding: 0.6rem 0.8rem; text-align: left; }
+    .rp-table th { background: rgba(255, 255, 255, 0.05); color: var(--accent-purple); }
 
     code { background: rgba(255,255,255,0.1); padding: 0.1rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.85rem; color: #e4e4e7; }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <header class="navbar">
     <div class="brand">
       <div class="brand-icon"></div>
-      <div><span class="brand-title">ORAJIN</span> <span class="brand-subtitle">· RÈGLEMENT</span></div>
       <div><span style="color:#fff">ARKAIA</span> <span style="color:var(--text-muted);font-weight:400">· RÈGLEMENT COMMUNAUTAIRE</span></div>
     </div>
-    <ul class="nav-links">
-      <li><a href="#sec-00">Introduction</a></li>
-      <li><a href="#sec-01">RP</a></li>
-      <li><a href="#sec-06">HRP</a></li>
-      <li><a href="https://discord.gg/VdfxuBenZ" target="_blank" class="btn-discord">Discord ↗</a></li>
-    </ul>
     <a href="https://discord.gg/VdfxuBenZ" target="_blank" class="btn-discord">Discord ↗</a>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="pill-tag"><span class="pill-dot"></span> RÈGLEMENT OFFICIEL</div>
-    <h1 class="hero-title">ORAJIN</h1>
-    <h2 class="hero-subtitle">· Règlement</h2>
-    <p class="hero-description">Le cadre complet de la communauté ORAJIN : règlement RP et HRP, procédures, scènes sensibles, sanctions. Une référence vivante, écrite pour être lue, citée et appliquée.</p>
-    <div class="hero-buttons">
-      <a href="#sec-00" class="btn-main">Commencer la lecture →</a>
-    </div>
-    <div class="date-badge"><span class="pill-dot"></span> DERNIÈRE MISE À JOUR <strong>2026</strong></div>
-  </section>
-
-  <!-- CONTAINER -->
   <div class="container">
     <aside class="sidebar">
       
@@ -176,6 +105,14 @@
       <div class="sidebar-block">
         <div class="sidebar-header">Partie 01 · Règlement RP</div>
         <nav class="nav-menu">
+          <a href="#sec-00" class="nav-item"><span>00</span> Introduction</a>
+          <a href="#sec-rp-01" class="nav-item"><span>01</span> Cadre général</a>
+          <a href="#sec-rp-02" class="nav-item"><span>02</span> Équipement & identification</a>
+          <a href="#sec-rp-03" class="nav-item"><span>03</span> Captures & scènes sensibles</a>
+          <a href="#sec-rp-04" class="nav-item"><span>04</span> Batailles & guerres</a>
+          <a href="#sec-rp-05" class="nav-item"><span>05</span> Commandes & outils RP</a>
+          <a href="#sec-rp-06" class="nav-item"><span>06</span> Techniques sensibles</a>
+          <a href="#sec-rp-07" class="nav-item"><span>07</span> Politique & allégeance</a>
           <a href="#sec-rp-08" class="nav-item"><span>08</span> Progression RP</a>
           <a href="#sec-rp-09" class="nav-item"><span>09</span> Infiltration & règles diverses</a>
           <a href="#sec-rp-10" class="nav-item"><span>10</span> Subjutsu</a>
@@ -184,15 +121,18 @@
 
       <!-- SOMMAIRE HRP -->
       <div class="sidebar-block">
-        <div class="sidebar-header">Sommaire</div>
         <div class="sidebar-header">Partie 02 · Règlement HRP</div>
         <nav class="nav-menu">
-          <a href="#sec-00" class="nav-item active"><span>00</span> Introduction</a>
-          <a href="#sec-01" class="nav-item"><span>01</span> Cadre Général RP</a>
-          <a href="#sec-02" class="nav-item"><span>02</span> Équipement & Masques</a>
-          <a href="#sec-03" class="nav-item"><span>03</span> Captures & RPK</a>
-          <a href="#sec-04" class="nav-item"><span>04</span> Guerres & Territoires</a>
+          <a href="#sec-hrp-01" class="nav-item"><span>01</span> Principes de base</a>
           <a href="#sec-hrp-02" class="nav-item"><span>02</span> Tickets & procédures</a>
+          <a href="#sec-hrp-03" class="nav-item"><span>03</span> Cohérence RP & scènes</a>
+          <a href="#sec-hrp-04" class="nav-item"><span>04</span> Vocal & communications</a>
+          <a href="#sec-hrp-05" class="nav-item"><span>05</span> Identité RP & comptes</a>
+          <a href="#sec-hrp-06" class="nav-item"><span>06</span> Comportement HRP</a>
+          <a href="#sec-hrp-07" class="nav-item"><span>07</span> Échanges & transferts</a>
+          <a href="#sec-hrp-08" class="nav-item"><span>08</span> Bugs & contournements</a>
+          <a href="#sec-hrp-09" class="nav-item"><span>09</span> Staff & confidentialité</a>
+          <a href="#sec-hrp-10" class="nav-item"><span>10</span> Suivi RP & événements</a>
         </nav>
       </div>
 
@@ -209,295 +149,575 @@
     </aside>
 
     <main class="main-content">
-      <!-- 00 INTRODUCTION -->
+
+      <!-- SECTION 00 : INTRODUCTION -->
       <section id="sec-00" class="rule-section">
-        <div class="content-header">00 · INTRODUCTION</div>
-        <h2 class="section-title">Le cadre de la communauté.</h2>
-        <div class="grid-cards">
-          <div class="info-card">
-            <div class="card-tag">Principes généraux</div>
-            <h3>Jouer la scène en priorité</h3>
-            <p>Une scène RP commencée doit obligatoirement être jouée jusqu'à sa fin. Toute contestation d'incohérence ou de manquement au règlement doit se faire **après la scène** via un ticket Discord, preuves à l'appui.</p>
+        <div class="intro-box">
+          <span class="theme-number">00 · INTRODUCTION</span>
+          <h2 style="font-size: 1.8rem; font-weight: 800; margin: 0.4rem 0 0.8rem 0;">Comment lire le règlement</h2>
+          <p style="color: #d4d4d8; line-height: 1.6; margin-bottom: 1rem;">
+            Le règlement ARKAIA pose un cadre clair pour le jeu, les scènes sensibles, les procédures et le comportement hors-RP. 
+            <strong>Tu joues d'abord, tu contestes ensuite avec la bonne procédure et les bonnes preuves.</strong>
+          </p>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 1rem; border-radius: 6px;">
+              <strong style="color: var(--accent-purple);">Par thèmes :</strong>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Utilise le sommaire pour parcourir un bloc complet (cadre général, batailles, etc).</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 1rem; border-radius: 6px;">
+              <strong style="color: var(--accent-purple);">Par article :</strong>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Chaque règle a un numéro stable. Cite « Art. 3.9 · RPK » pour être précis.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 1rem; border-radius: 6px;">
+              <strong style="color: var(--accent-purple);">Avant ticket :</strong>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Vérifie la règle. Identifie l'article concerné avant toute plainte ou contestation.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 1rem; border-radius: 6px;">
+              <strong style="color: var(--accent-purple);">En scène :</strong>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Joue d'abord. Toute contestation se fait après la scène, jamais pendant.</p>
+            </div>
           </div>
-          <div class="info-card">
-            <div class="card-tag">Sanctions & Preuves</div>
-            <h3>Charge de la preuve</h3>
-            <p>Tout signalement d'infraction doit être accompagné de preuves vidéo claires (avec le son) ou de captures intégrales d'écran. Les preuves altérées ne seront pas prises en compte.</p>
 
-      <!-- PARTIE 02 : RÈGLEMENT HRP HEADER -->
-      <div class="section-divider" id="sec-hrp-02">
-        <span class="theme-number" style="font-size: 1rem;">PARTIE 02</span>
-        <h1 style="font-size: 2.2rem; font-weight: 900;">RÈGLEMENT HRP & PROCÉDURES</h1>
-        <p class="theme-desc">Les règles hors-roleplay, tickets, comportement et administration.</p>
-      </div>
-
-      <!-- THÈME 02 HRP -->
-      <section class="rule-section">
-        <div class="theme-header">
-          <span class="theme-number">Thème 02</span>
-          <h2 class="theme-title">Tickets & procédures</h2>
-          <p class="theme-desc">Toute demande officielle doit passer par la bonne procédure, avec preuves et contexte.</p>
-        </div>
-
-        <div class="rule-card">
-          <div class="rule-card-header">
-            <span class="badge-art">Art. 2.1</span>
-            <h3>Création de ticket</h3>
-            <span class="badge-severity badge-info">Info</span>
-            <span class="badge-tag-grey">#ticket</span>
+          <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">01 · Niveaux de gravité</h3>
+          <div class="severity-grid">
+            <div class="severity-card">
+              <h4 style="color: #60a5fa;">Niveau 01 · Info</h4>
+              <p style="font-size: 0.8rem; color: var(--text-muted);">Cadre normal. Règles de fonctionnement courant. Reste cohérent et fairplay.</p>
+            </div>
+            <div class="severity-card">
+              <h4 style="color: #fb923c;">Niveau 02 · Modérée</h4>
+              <p style="font-size: 0.8rem; color: var(--text-muted);">Avertissement. Sanction staff possible, annulation de scène, warn.</p>
+            </div>
+            <div class="severity-card">
+              <h4 style="color: #f87171;">Niveau 03 · Sévère</h4>
+              <p style="font-size: 0.8rem; color: var(--text-muted);">RPK / kick possible. Exposition au RPK, void, sanctions cumulables.</p>
+            </div>
+            <div class="severity-card">
+              <h4 style="color: #ef4444;">Niveau 04 · Critique</h4>
+              <p style="font-size: 0.8rem; color: var(--text-muted);">Bannissement. Sanctions lourdes, jusqu'au bannissement définitif.</p>
+            </div>
           </div>
-          <p>Passe par ticket pour : contestations, déwarn, déban, changement de village, plaintes ou demandes admin.</p>
-          <p>Utilise la bonne catégorie : problème, plainte, partenariat, candidature staff ou autres. Chaque demande doit être claire, détaillée et respectueuse.</p>
-          <p>Pour toute plainte, des preuves sont obligatoires :</p>
-          <ul>
-            <li>Captures d'écran.</li>
-            <li>Vidéos.</li>
-            <li>Éléments datés.</li>
-          </ul>
-          <p>Il est strictement interdit d'ouvrir un ticket inutile, de troll en ticket, de spam ou de faire perdre du temps au staff.</p>
         </div>
       </section>
 
-      <!-- 01 CADRE GÉNÉRAL RP -->
-      <section id="sec-01" class="rule-section">
-        <div class="content-header">01 · CADRE GÉNÉRAL RP</div>
-        <h2 class="section-title">Règles de base du Roleplay.</h2>
-        <div class="rule-card">
-          <div class="rule-card-header">
-            <span class="badge-art">Art. 2.2</span>
-            <h3>Contestations</h3>
-            <span class="badge-severity badge-moderee">Modérée</span>
-            <span class="badge-tag-grey">#ticket</span>
-          </div>
-          <p>Toute contestation d'une décision staff passe par un ticket ou par le support vocal si cela est demandé.</p>
-          <p>Contacter un membre du staff en message privé pour contester une sanction est strictement interdit.</p>
+      <!-- PARTIE 01 : RÈGLEMENT RP HEADER -->
+      <div class="section-divider">
+        <span class="theme-number" style="font-size: 1rem;">PARTIE 01</span>
+        <h1 style="font-size: 2.2rem; font-weight: 900;">RÈGLEMENT RP</h1>
+        <p class="theme-desc">Le cadre du jeu, des scènes et des conséquences in-character.</p>
+      </div>
+
+      <!-- THÈME 01 -->
+      <section id="sec-rp-01" class="rule-section">
+        <div class="theme-header">
+          <span class="theme-number">Thème 01</span>
+          <h2 class="theme-title">Cadre général</h2>
+          <p class="theme-desc">Bases de présence en scène, lecture du temps RP, circulation entre pays.</p>
         </div>
 
         <div class="rule-card">
           <div class="rule-card-header">
             <span class="badge-art">Art. 1.1</span>
-            <span class="badge-severity badge-moderate">Modérée</span>
-            <span class="badge-tag-grey">#AFK</span>
-            <span class="badge-tag-grey">#PRESENCE</span>
-            <span class="badge-art">Art. 2.3</span>
-            <h3>Déwarn et déban</h3>
+            <h3>AFK et présence</h3>
             <span class="badge-severity badge-moderee">Modérée</span>
-            <span class="badge-tag-grey">#sanction</span>
+            <span class="badge-tag-grey">#scène</span>
+            <span class="badge-tag-grey">#présence</span>
           </div>
-          <h4>AFK et absence en RP</h4>
-          <p>Il est strictement interdit de se mettre AFK (Away From Keyboard) dans une zone active ou au milieu d'une scène RP. Tout joueur AFK dans une zone neutre ou ennemie reste entièrement vulnérable aux interactions, attaques ou captures.</p>
-          <p>Toute demande de déwarn ou de déban passe obligatoirement par un ticket.</p>
-          <p>La sanction doit dater d'au moins un à deux mois selon sa gravité. Une demande trop récente ne sera pas examinée. Toute requête transmise en message privé sera refusée.</p>
+          <p>Il est interdit de rester AFK volontairement dans une scène RP pour éviter une interaction ou une conséquence.</p>
+          <p>Si tu dois t'absenter :</p>
+          <ul>
+            <li>Préviens les joueurs concernés.</li>
+            <li>Quitte la scène correctement si possible.</li>
+          </ul>
+          <p>Un AFK abusif peut entraîner :</p>
+          <ul>
+            <li>L'annulation de la scène.</li>
+            <li>Une sanction staff.</li>
+          </ul>
+          <p>Un AFK ne doit jamais servir à bloquer, esquiver ou casser une scène.</p>
         </div>
 
         <div class="rule-card">
           <div class="rule-card-header">
             <span class="badge-art">Art. 1.2</span>
-            <span class="badge-art">Art. 2.4</span>
-            <h3>Ticket admin et scènes sensibles</h3>
+            <h3>Bastion</h3>
             <span class="badge-severity badge-severe">Sévère</span>
-            <span class="badge-tag-grey">#BASTION</span>
-            <span class="badge-tag-grey">#INVASION</span>
-            <span class="badge-tag-grey">#staff</span>
+            <span class="badge-tag-grey">#bataille</span>
+            <span class="badge-tag-grey">#bastion</span>
           </div>
-          <h4>Bastion et zones protégées</h4>
-          <p>Les bastions et villages ninjas disposent d'un statut de sécurité élevé. Il est interdit de s'y introduire sans raison RP valable ou sans déclaration officielle/autorisation. Toute intrusion non déclarée sera traitée comme une provocation ou un acte hostile direct.</p>
-          <p>Quand un ticket admin est validé, la scène doit être effectuée dans le délai imparti. Si la scène n'est pas jouée à temps, le ticket peut être fermé.</p>
-          <p>Indique toujours dans ton ticket : ton nom RP, le contexte précis et la demande exacte.</p>
-          <p>Scènes demandant une validation préalable :</p>
+          <p>Le bastion est considéré comme le camp adverse : il correspond au village ou point fort du pays ennemi.</p>
+          <p>Chaque bastion dispose d'un drapeau. Sa capture est obligatoire avant toute revendication.</p>
+          <p><strong>Zones de relève en bataille :</strong> Brume de Kiri, autour du bastion de Konoha et sur le pont : si tu tombes dans l'une de ces zones, tu n'es relevable par la faction adverse que si celle-ci remporte la bataille.</p>
+          <p><strong>Spells INTERDITS devant les bastions :</strong></p>
           <ul>
-            <li>Scène RPK.</li>
-            <li>Capture très sensible.</li>
-            <li>Attaque de village.</li>
-            <li>Scène exceptionnelle demandant un arbitrage staff.</li>
+            <li>Démon Poisson</li>
+            <li>Susano</li>
+            <li>Piscine Hoshigaki</li>
+            <li>Golem de Sang</li>
           </ul>
-          <p>Les Keto, RPK et autres scènes à trame doivent obligatoirement être joués sous la surveillance directe du staff.</p>
+          <p>La récupération d'un bastion se règle uniquement : par une négociation entre les deux villages concernés ou par une guerre préparée.</p>
         </div>
 
         <div class="rule-card">
           <div class="rule-card-header">
             <span class="badge-art">Art. 1.3</span>
-            <span class="badge-severity badge-moderate">Modérée</span>
-            <span class="badge-tag-grey">#FEAR_RP</span>
-            <span class="badge-tag-grey">#PAIN_RP</span>
-            <span class="badge-art">Art. 2.5</span>
-            <h3>Changement de village</h3>
+            <h3>Haut gradé</h3>
             <span class="badge-severity badge-info">Info</span>
-            <span class="badge-tag-grey">#village</span>
+            <span class="badge-tag-grey">#hiérarchie</span>
           </div>
-          <h4>Fear RP et Pain RP</h4>
-          <p>Votre personnage doit exprimer la peur face à une menace de mort évidente (ex: être encerclé par plusieurs ennemis armés) et simuler la douleur en cas de blessure grave. Minimiser les blessures pour prendre la fuite de manière irréaliste est interdit.</p>
-          <p>Tout changement de village doit obligatoirement passer par la procédure officielle via ticket.</p>
+          <p>Un ninja est considéré comme haut gradé à partir du rang de Tokubetsu Jonin.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 1.4</span>
+            <h3>Temporalité</h3>
+            <span class="badge-severity badge-info">Info</span>
+            <span class="badge-tag-grey">#temps</span>
+          </div>
+          <p>1 semaine IRL = 1 an RP, 1 jour IRL = 1 mois RP.</p>
+          <p>En règle générale, un personnage sort de l'académie à 14 ans.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 1.5</span>
+            <h3>Bastions, pays et frontières</h3>
+            <span class="badge-severity badge-severe">Sévère</span>
+            <span class="badge-tag-grey">#frontière</span>
+            <span class="badge-tag-grey">#RPK</span>
+          </div>
+          <p>Un bastion est une zone protégée et sensible.</p>
+          <p>Entrer dans un pays ennemi impose un <code>/na</code>, exemple : <em>« /na Un Jonin de Konoha rentre au Pays de l'Eau »</em>. Valable de Genin à Kage.</p>
+          <p>Autour des bastions, les restrictions sont plus fortes. Une intrusion peut exposer au RPK.</p>
+
+          <div class="sub-article">
+            <h4>Art. 1.5.1 · Pays adverse et zone neutre</h4>
+            <p>Tout ninja entrant dans un pays ennemi doit obligatoirement effectuer un <code>/na</code>. L'absence d'annonce expose à une sanction HRP. Une fois dans le pays adverse, tu es sous risque RPK constant. Exception : joueurs ayant obtenu une tenue ou un bandeau du village ennemi via un ticket vol.</p>
+          </div>
+
+          <div class="sub-article">
+            <h4>Art. 1.5.2 · Restrictions autour des bastions</h4>
+            <p>Aucun ninja adverse ne se déplace librement dans un bastion, sauf invitation exceptionnelle validée.</p>
+            <p>Les portes marquent les limits du bastion : les franchir peut t'exposer à un RPK sans void.</p>
+            <p>Interdits dans / autour du bastion : jutsu, épée, taijutsu.</p>
+            <p>Il est interdit d'attaquer dans les frontières ou les passages, d'y faire des allers-retours, ou de passer la frontière en plein combat. En combat, le seul repli autorisé est un repli vers le bastion ou le village concerné.</p>
+          </div>
+
+          <div class="sub-article">
+            <h4>Art. 1.5.3 · Zone neutre</h4>
+            <p>Une zone neutre est un espace qui n'appartient à aucun village. Elle ne suspend jamais les règles RP générales du serveur. Le statut neutre ne doit pas servir à contourner une bataille ou provoquer sans conséquence.</p>
+          </div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 1.6</span>
+            <h3>Fairplay</h3>
+            <span class="badge-severity badge-info">Info</span>
+            <span class="badge-tag-grey">#fairplay</span>
+          </div>
+          <p>Le fairplay consiste à prendre en compte l'expérience des autres joueurs. Tout le monde doit pouvoir jouer dans de bonnes conditions.</p>
+          <p>Exemple de manque de fairplay : S'acharner sur un seul ninja alors que l'écart de nombre ou de puissance est déjà écrasant.</p>
+          <p>Le staff peut sanctionner un manque de fairplay au cas par cas.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 1.7</span>
+            <h3>WinRP et loseRP</h3>
+            <span class="badge-severity badge-moderee">Modérée</span>
+            <span class="badge-tag-grey">#fairplay</span>
+          </div>
+          <p>Le winRP consiste à vouloir gagner à tout prix. Le loseRP consiste à accepter une défaite cohérente quand la scène le demande.</p>
+          <p>Tu ne dois jamais ignorer ton environnement, tes blessures ou la logique de la scène pour forcer une victoire.</p>
+          <p>Exemple : Refuser toute négociation uniquement parce que tu sais que ton personnage est plus fort en combat.</p>
+          <p>Le loseRP crée souvent plus de conséquences, plus de scènes et plus de développement.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 1.8</span>
+            <h3>ForceRP</h3>
+            <span class="badge-severity badge-moderee">Modérée</span>
+            <span class="badge-tag-grey">#fairplay</span>
+          </div>
+          <p>Le forceRP consiste à imposer une action, un passé ou une situation à d'autres joueurs sans leur laisser de vraie réponse RP.</p>
+          <p>Exemples interdits :</p>
+          <ul>
+            <li>Inventer un passé qui force une autre faction à entrer dans ton histoire.</li>
+            <li>Provoquer uniquement pour forcer un combat.</li>
+            <li>Lancer une scène ciblée uniquement pour voler un objet obtenu juste avant, sans construction RP crédible.</li>
+          </ul>
+          <p>Tu peux proposer une scène forte. Tu ne peux pas obliger l'autre à la subir sans cadre ni logique.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 1.9</span>
+            <h3>Métagaming</h3>
+            <span class="badge-severity badge-severe">Sévère</span>
+            <span class="badge-tag-grey">#meta</span>
+            <span class="badge-tag-grey">#HRP</span>
+          </div>
+          <p>Le métagaming consiste à utiliser en RP des informations obtenues hors RP (Discord, Stream, Réseau social, Message non destiné à ton personnage, Information d'interface non lisible en RP).</p>
+          <p>Tu ne peux pas reconnaître une faction uniquement grâce au HUD. Il faut une preuve RP crédible, un signe visible ou un contexte clair.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 1.10</span>
+            <h3>Powergaming</h3>
+            <span class="badge-severity badge-severe">Sévère</span>
+            <span class="badge-tag-grey">#abus</span>
+          </div>
+          <p>Le powergaming consiste à réaliser une action possible en jeu, mais incohérente dans l'univers Naruto.</p>
+          <p>Exemples : Rester sous l'eau anormalement longtemps sans conséquence, exploiter une mécanique du jeu pour ignorer une limite physique évidente.</p>
+          <p>Le staff peut annuler l'action, relever la scène ou appliquer un RPK selon le contexte.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 1.11</span>
+            <h3>Mass RP</h3>
+            <span class="badge-severity badge-info">Info</span>
+            <span class="badge-tag-grey">#cohérence</span>
+          </div>
+          <p>Le mass RP consiste à prendre en compte que le monde n'est jamais vide. Même avec peu de joueurs connectés, villages, routes et institutions restent peuplés en RP.</p>
+          <p>Tu dois donc tenir compte des villageois, marchands, gardes et ninjas non joués.</p>
+          <p>Exemples : Lancer un jutsu en plein village sans raison valable peut toucher des civils ; une prison n'est jamais libre de toute surveillance.</p>
+          <p>L'usage d'un jutsu de clan, d'un subjutsu ou d'un KG unique par une force spéciale ne suffit pas, à lui seul, à prouver l'appartenance à cette entité.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 1.12</span>
+            <h3>Cohérence RP</h3>
+            <span class="badge-severity badge-moderee">Modérée</span>
+            <span class="badge-tag-grey">#cohérence</span>
+          </div>
+          <p>La cohérence RP consiste à respecter l'univers, le contexte et la logique de ton personnage. Tu dois notamment : gardes un vocabulaire adapté, respecter la hiérarchie en jeu, éviter les changements d'apparence sans raison valable ou les jutsu dans des contextes absurdes.</p>
+          <p>Une action techniquement possible, mais incohérente avec la scène ou l'univers, peut être sanctionnée.</p>
         </div>
       </section>
 
-      <!-- 02 ÉQUIPEMENT & MASQUES -->
-      <section id="sec-02" class="rule-section">
-        <div class="content-header">02 · ÉQUIPEMENT & MASQUES</div>
-        <h2 class="section-title">Masquage et Reconnaissance.</h2>
-      <!-- ANNEXES : SANCTIONS CRITIQUES -->
-      <section id="sec-annex-sanctions" class="rule-section">
-        <div class="section-divider">
-          <span class="theme-number" style="font-size: 1rem;">ANNEXE 01</span>
-          <h1 style="font-size: 2.2rem; font-weight: 900; color: #ef4444;">SANCTIONS CRITIQUES</h1>
-          <p class="theme-desc">Les règles suivantes exposent à des sanctions lourdes : wipe, ban temporaire ou bannissement définitif. Aucune justification RP ne couvre un abus listé ici.</p>
+      <!-- THÈME 02 -->
+      <section id="sec-rp-02" class="rule-section">
+        <div class="theme-header">
+          <span class="theme-number">Thème 02</span>
+          <h2 class="theme-title">Équipement & identification</h2>
+          <p class="theme-desc">Identification, artefacts, armes uniques, masques et règles de tenue.</p>
         </div>
 
         <div class="rule-card">
           <div class="rule-card-header">
             <span class="badge-art">Art. 2.1</span>
-            <span class="badge-severity badge-moderate">Modérée</span>
-            <span class="badge-tag-grey">#MASQUES</span>
-            <span class="badge-tag-grey">#ANONYMAT</span>
-        <div class="critical-grid">
-          <div class="critical-item">
-            <strong>Art. 3.9 · RPK</strong>
-            <p>Règlement RP · Captures & scènes sensibles</p>
+            <h3>Armes uniques et items uniques</h3>
+            <span class="badge-severity badge-moderee">Modérée</span>
+            <span class="badge-tag-grey">#arme</span>
+            <span class="badge-tag-grey">#artefact</span>
           </div>
-          <div class="critical-item">
-            <strong>Art. 3.10 · Vols d'armes uniques / Dojutsu</strong>
-            <p>Règlement RP · Captures & scènes sensibles</p>
-          </div>
-          <div class="critical-item">
-            <strong>Art. 7.2 · Coup d'état</strong>
-            <p>Règlement RP · Politique & allégeance</p>
-          </div>
-          <div class="critical-item">
-            <strong>Art. 9.1 · Infiltration</strong>
-            <p>Règlement RP · Infiltration & règles diverses</p>
-          </div>
-          <div class="critical-item">
-            <strong>Art. 9.9 · RP à caractère sexuel</strong>
-            <p>Règlement RP · Infiltration & règles diverses</p>
-          </div>
-          <div class="critical-item">
-            <strong>Art. 1.4 · Sanctions lourdes & abus HRP</strong>
-            <p>Règlement HRP · Principes de base</p>
-          </div>
-          <div class="critical-item">
-            <strong>Art. 5.3 · Multi-comptes</strong>
-            <p>Règlement HRP · Identité RP & comptes</p>
-          </div>
-          <div class="critical-item">
-            <strong>Art. 6.2 · Discrimination & harcèlement</strong>
-            <p>Règlement HRP · Comportement HRP</p>
-          </div>
-          <div class="critical-item">
-            <strong>Art. 6.3 · Publicité non autorisée</strong>
-            <p>Règlement HRP · Comportement HRP</p>
-          </div>
-          <div class="critical-item">
-            <strong>Art. 7.1 · Échange & transaction HRP</strong>
-            <p>Règlement HRP · Échanges & transferts</p>
-          </div>
-          <div class="critical-item">
-            <strong>Art. 8.2 · Contournement de sanctions</strong>
-            <p>Règlement HRP · Bugs & contournements</p>
-          </div>
-          <h4>Anonymat et Masques</h4>
-          <p>Le port d'un masque dissimule entièrement l'identité visuelle de votre personnage. Un joueur masqué ne peut pas être reconnu à sa voix ou son pseudonyme par d'autres joueurs, sauf si son identité a été révélée au préalable lors d'une scène explicite.</p>
+          <p>Il est strictly interdit de dissimuler une arme unique pour éviter d'être identifié. Toute arme en ta possession doit rester visible en permanence.</p>
+          <p>Une arme unique est considérée comme un artefact dès qu'elle bénéficie d'une renommée reconnue en jeu. Les Épées de la Brume obtiennent automatiquement ce statut.</p>
+          <p>Pour les créations personnelles, il revient aux joueurs de construire leur légende. Une arme peut évoluer en RP, mais cette évolution ne modifie jamais automatiquement ses statistiques ou effets HRP.</p>
+          <p>Une seule demande de négociation d'artefact est autorisée par village et par jour (parchemins, épées notamment).</p>
         </div>
-      </section>
 
         <div class="rule-card">
           <div class="rule-card-header">
             <span class="badge-art">Art. 2.2</span>
-            <span class="badge-severity badge-severe">Sévère</span>
-            <span class="badge-tag-grey">#LOOT</span>
-            <span class="badge-tag-grey">#INVENTAIRE</span>
-      <!-- ANNEXES : DISCORD -->
-      <section id="sec-annex-discord" class="rule-section">
-        <div class="intro-box" style="border-color: rgba(168, 85, 247, 0.4);">
-          <span class="theme-number">REJOINS LA COMMUNAUTÉ</span>
-          <h2 style="font-size: 1.8rem; font-weight: 800; margin: 0.4rem 0 0.8rem 0;">Discord ARKAIA</h2>
-          <p style="color: #d4d4d8; line-height: 1.6; margin-bottom: 1.5rem;">
-            Tickets, annonces, suivi RP, déclarations de guerre, candidatures staff. Tout passe par Discord, c'est l'endroit officiel pour contacter l'équipe et la communauté.
-          </p>
-          <a href="https://discord.gg/VdfxuBenZ" target="_blank" class="btn-discord" style="display: inline-block; margin-bottom: 2rem;">Ouvrir le Discord ↗</a>
-
-          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
-            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 0.8rem; border-radius: 6px;">
-              <strong style="color: #fff; font-size: 0.85rem;">#tickets</strong>
-              <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">Ouvrir un ticket (contestation, déban, plainte)</p>
-            </div>
-            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 0.8rem; border-radius: 6px;">
-              <strong style="color: #fff; font-size: 0.85rem;">#annonces</strong>
-              <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">Annonces officielles & mises à jour du règlement</p>
-            </div>
-            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 0.8rem; border-radius: 6px;">
-              <strong style="color: #fff; font-size: 0.85rem;">#suivi-rp</strong>
-              <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">Suivi RP, missions, validations</p>
-            </div>
-            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 0.8rem; border-radius: 6px;">
-              <strong style="color: #fff; font-size: 0.85rem;">#vocaux-rp</strong>
-              <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">Vocaux RP, staff connectés</p>
-            </div>
+            <h3>Artefacts tranchants</h3>
+            <span class="badge-severity badge-info">Info</span>
+            <span class="badge-tag-grey">#arme</span>
+            <span class="badge-tag-grey">#kenjutsu</span>
           </div>
-          <h4>Vol d'équipement et dépouillement</h4>
-          <p>Le pillage complet du stuff d'un joueur K.O. est limité par la cohérence de la scène. Il est interdit de dépouiller un joueur de manière irraisonnée sans justification RP préalable.</p>
+          <p>Tous les artefacts tranchants possédant une lame doivent utiliser le style de combat Kenjutsu.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 2.3</span>
+            <h3>Masques</h3>
+            <span class="badge-severity badge-moderee">Modérée</span>
+            <span class="badge-tag-grey">#identité</span>
+          </div>
+          <p>Une personne portant un masque est considérée comme impossible à reconnaître. Cela vaut aussi pour : masque simple, masque fissuré, respirateur.</p>
+          <p>Exceptions :</p>
+          <ul>
+            <li>Si la personne détient une arme unique.</li>
+            <li>Si elle donne son nom alors qu'elle est masquée.</li>
+            <li>Si la personne porte un artefact de clan, tu peux reconnaître le clan, et uniquement le clan (ex. jarre Sabaku, tenue de clan).</li>
+          </ul>
+          <p>Voir le même masque et la même tenue plusieurs heures plus tard ne permet pas de récupérer une identité. Un style de combat ou une technique signature ne suffit pas à identifier formellement un joueur.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 2.4</span>
+            <h3>Familiers et objets boutique</h3>
+            <span class="badge-severity badge-info">Info</span>
+            <span class="badge-tag-grey">#identité</span>
+          </div>
+          <p>Tu ne peux pas reconnaître un ninja à son familier ou à ses tenues boutique. Ces éléments ne sont pas uniques.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 2.5</span>
+            <h3>Tenues en contexte de combat</h3>
+            <span class="badge-severity badge-severe">Sévère</span>
+            <span class="badge-tag-grey">#tenue</span>
+            <span class="badge-tag-grey">#combat</span>
+          </div>
+          <p>Il est strictement interdit aux hauts gradés de porter une tenue réservée à un grade inférieur en contexte de combat (Bataille imminente, Guerre, Affrontement PvP, Capture de ninja, Prise ou défense de drapeau).</p>
+          <p>Exemples interdits : Un Tokubetsu Jonin en survêtement de Genin ; Un Jonin avec une tenue de Tokubetsu Jonin.</p>
+          <p>Hors combat, une liberté de tenue existe tant qu'elle ne crée pas de confusion. Le non-respect entraîne des sanctions immédiates.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 2.6</span>
+            <h3>Tenues</h3>
+            <span class="badge-severity badge-moderee">Modérée</span>
+            <span class="badge-tag-grey">#tenue</span>
+          </div>
+          <p>Les nukenin ne sont pas autorisés à donner ou vendre des tenues appartenant à un village.</p>
+          <p>Tu ne peux pas porter une tenue supérieure à ton grade. Il est strictement interdit de vendre des tenues liées à une appartenance RP spécifique (y compris via HDV) ou d'acheter une tenue d'un village ennemi via PNJ ou joueur.</p>
         </div>
       </section>
 
-      <!-- 03 CAPTURES & RPK -->
-      <section id="sec-03" class="rule-section">
-        <div class="content-header">03 · CAPTURES & RPK</div>
-        <h2 class="section-title">Morts permanentes et Captures.</h2>
-      <!-- ANNEXES : STAFF & ROLES -->
-      <section id="sec-annex-staff" class="rule-section">
+      <!-- THÈME 03 -->
+      <section id="sec-rp-03" class="rule-section">
         <div class="theme-header">
-          <span class="theme-number">ANNEXE 02</span>
-          <h2 class="theme-title">Staff & Rôles</h2>
-          <p class="theme-desc">Qui contacter, et quand. Contacte l'équipe pour un besoin réel, pas pour gagner du confort. Tickets, DM et !pm ne sont pas des outils de raccourci.</p>
+          <span class="theme-number">Thème 03</span>
+          <h2 class="theme-title">Captures & scènes sensibles</h2>
+          <p class="theme-desc">Capturer, transporter, voler ou lancer une scène de RPK demande un cadre strict.</p>
         </div>
 
         <div class="rule-card">
           <div class="rule-card-header">
             <span class="badge-art">Art. 3.1</span>
-            <span class="badge-severity badge-critical">Critique</span>
+            <h3>Assommer</h3>
+            <span class="badge-severity badge-moderee">Modérée</span>
+            <span class="badge-tag-grey">#capture</span>
+          </div>
+          <p>Le fait d'assommer, de capturer ou d'emprisonner un shinobi doit toujours se faire dans le respect du RP et de manière logique.</p>
+          <p>Un shinobi peut être assommé uniquement avec une raison RP valable. Le joueur capturé doit avoir une possibilité de réagir et une porte de sortie RP doit toujours exister.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 3.2</span>
+            <h3>Captures hors batailles</h3>
+            <span class="badge-severity badge-severe">Sévère</span>
+            <span class="badge-tag-grey">#capture</span>
+            <span class="badge-tag-grey">#grade</span>
+          </div>
+          <p>Pour des raisons de fairplay, lors d'une capture de ninja dans le cadre d'un ticket RPK : il est interdit de déployer plus de 3 personnes d'un rang égal ou supérieur à celui de la cible (ne s'applique pas aux Jonin+). Un Genin ne peut pas être capturé dans ce cadre.</p>
+          
+          <table class="rp-table">
+            <thead>
+              <tr><th>Grade du joueur</th><th>Peut capturer</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Genin</td><td>Personne dans ce cadre</td></tr>
+              <tr><td>Chunin</td><td>Chunin → Tokubetsu Jonin</td></tr>
+              <tr><td>Tokubetsu Jonin</td><td>Chunin → Tokubetsu Jonin</td></tr>
+              <tr><td>Jonin</td><td>Jonin → Sannin</td></tr>
+              <tr><td>Sannin</td><td>Jonin → Sannin</td></tr>
+            </tbody>
+          </table>
+
+          <p>Conditions de capture : Un ninja doit obligatoirement être mis en pain. Menacer une cible à la lame sous la gorge en plein combat est interdit : cette action n'est autorisée qu'après le combat sur une cible déjà en pain.</p>
+          <p>Il est interdit de capturer un ninja alors qu'un des tiens est déjà capturé dans le but d'en faire un levier diplomatique. Si un joueur se rend/est capturé et amené au village, aucune reprise de combat n'est autorisée après cela.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 3.3</span>
+            <h3>Transport d'un prisonnier</h3>
+            <span class="badge-severity badge-moderee">Modérée</span>
+            <span class="badge-tag-grey">#capture</span>
+          </div>
+          <p>Si tu portes un ninja sur ton dos et que tu es menacé ou attaqué par des jutsu, tu es obligé de le déposer. Une prise d'otage reste possible. Tu ne peux pas fuir librement avec le prisonnier sur le dos si l'opposition peut te rattraper.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 3.4</span>
+            <h3>Cas de chute après dépôt</h3>
+            <span class="badge-severity badge-moderee">Modérée</span>
+            <span class="badge-tag-grey">#capture</span>
+          </div>
+          <p>Si tu déposes un ninja au sol, qu'il tente de fuir puis tombe, tu as plein droit de vie ou de mort sur lui.</p>
+          <p>Si tu tombes après l'avoir déposé et que le ninja tombe aussi sans avoir tenté de fuir, il ne peut pas être soumis à un RPK ni être relevé.</p>
+          <p><strong>Sommation pendant le transport :</strong> si tu portes un ninja sur ton dos et que tu te retrouves encerclé par 2 ninjas ou plus d'un rang équivalent au tien, tu es dans l'obligation de déposer le prisonnier dès la sommation.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 3.5</span>
+            <h3>Capture sous Jonin</h3>
+            <span class="badge-severity badge-info">Info</span>
+            <span class="badge-tag-grey">#grade</span>
+          </div>
+          <p>La capture en dessous du rang de Jonin est interdite hors cadre spécifique validé.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 3.6</span>
+            <h3>Arnaques et racket</h3>
+            <span class="badge-severity badge-moderee">Modérée</span>
+            <span class="badge-tag-grey">#économie</span>
+          </div>
+          <p>L'arnaque concernant un équipement ou tout autre objet est strictly interdite. En cas de prêt, même si ton personnage meurt, tu restes tenu de rembourser ta dette.</p>
+          <p>Le racket est limité à <strong>5 000 ryos par scène au total</strong>, quel que soit le nombre de participants (1 joueur = 5000 ryos max ; 8 joueurs = 5000 ryos répartis).</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 3.7 & 3.7.1</span>
+            <h3>Pain & Fear RP</h3>
+            <span class="badge-severity badge-moderee">Modérée</span>
+            <span class="badge-tag-grey">#pain</span>
+            <span class="badge-tag-grey">#fear</span>
+          </div>
+          <p>Être en pain signifie que tes HP sont trop bas pour bouger. Tu dois jouer ton fear selon ton grade et le contexte. Tu dois aussi jouer la douleur, la fatigue et les conséquences physiques après un combat lourd.</p>
+          <p>Le fearRP consiste à jouer la peur (être encerclé, inférieur en nombre, face à plus fort en territoire ennemi). Un manque grave de fearRP peut exposer au RPK.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 3.8</span>
+            <h3>RP prison</h3>
+            <span class="badge-severity badge-moderee">Modérée</span>
+            <span class="badge-tag-grey">#prison</span>
+          </div>
+          <p>Un joueur en prison sans interaction pendant 30 minutes peut être libéré rapidement par un haut gradé. Pas de détention entre 30 et 60 min sans suivi RP. Il est strictement interdit de fuir d'une cellule de Police, de Palais ou d'ANBU.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 3.9</span>
+            <h3>RPK</h3>
+            <span class="badge-severity badge-critique">Critique</span>
             <span class="badge-tag-grey">#RPK</span>
-            <span class="badge-tag-grey">#MORT_PERMANENTE</span>
-        <div class="staff-grid">
-          <div class="staff-card">
-            <h4>Administration</h4>
-            <div class="role-title">Gérant Serveur & Gérant Staffs</div>
-            <p>Décisions stratégiques, sanctions lourdes, validations majeures.</p>
+            <span class="badge-tag-grey">#staff</span>
           </div>
-          <div class="staff-card">
-            <h4>Modération</h4>
-            <div class="role-title">Modérateurs</div>
-            <p>Spectate RPK, arbitrage de scène, tickets courants.</p>
+          <p>Lors de l'initiation d'une scène de RPK : tu dois obligatoirement <code>@staff</code> en jeu pour spectate (valable pour Keto/trames). À défaut, la scène peut être void sans enregistrement vidéo complet. Tickets RPK autorisés uniquement à partir de Tokubetsu Jonin.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 3.10 & 3.11</span>
+            <h3>Vols uniques et bluff</h3>
+            <span class="badge-severity badge-critique">Critique</span>
+            <span class="badge-tag-grey">#vol</span>
+            <span class="badge-tag-grey">#ticket</span>
           </div>
-          <div class="staff-card">
-            <h4>Animation</h4>
-            <div class="role-title">Animateurs</div>
-            <p>Événements spéciaux, tournois, scénarios validés.</p>
+          <p>Vol d'arme unique ou Dojutsu : ticket obligatoire. Vol de pupilles sur le détenteur originel uniquement avec <code>/roll</code> par œil. Immunité d'arme : 5 jours après l'avoir obtenue.</p>
+          <p><strong>Vol par bluff (pays neutre) :</strong> Un joueur Jonin+ peut se faire voler ses armes/parchemins sans ticket par pure pression RP/intimidation en pays neutre. La remise doit rester volontaire en RP.</p>
+        </div>
+      </section>
+
+      <!-- THÈME 04 -->
+      <section id="sec-rp-04" class="rule-section">
+        <div class="theme-header">
+          <span class="theme-number">Thème 04</span>
+          <h2 class="theme-title">Batailles & guerres</h2>
+          <p class="theme-desc">Repli, guerres et combats de masse obéissent à des timings précis.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 4.1 à 4.6</span>
+            <h3>Règlement des Batailles & Guerres</h3>
+            <span class="badge-severity badge-severe">Sévère</span>
+            <span class="badge-tag-grey">#bataille</span>
+            <span class="badge-tag-grey">#guerre</span>
           </div>
-          <div class="staff-card">
-            <h4>Suivi RP</h4>
-            <div class="role-title">Maître de Jeu</div>
-            <p>Validation des apprentissages, suivi des artefacts et pupilles.</p>
+          <p><strong>Repli :</strong> Le premier repli marque la défaite. 3 minutes pour regagner le bastion. Repli immédiat sur annonce <code>/repli</code>. Continuer de se battre post-repli = RPK direct.</p>
+          <p><strong>Guerres :</strong> Déclenchable après 3 batailles ou motif majeur. Présence des deux Kage requise. NLR de 45 minutes par secteur (infraction NLR = bannissement 1 semaine).</p>
+        </div>
+      </section>
+
+      <!-- THÈME 05 -->
+      <section id="sec-rp-05" class="rule-section">
+        <div class="theme-header">
+          <span class="theme-number">Thème 05</span>
+          <h2 class="theme-title">Commandes & outils RP</h2>
+          <p class="theme-desc">Utilise chaque commande pour le bon usage.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 5.1 à 5.3</span>
+            <h3>Commandes chat, missives & rolls</h3>
+            <span class="badge-severity badge-moderee">Modérée</span>
+            <span class="badge-tag-grey">#commandes</span>
           </div>
-          <div class="staff-card">
-            <h4>Communication</h4>
-            <div class="role-title">Community Manager</div>
-            <p>Partenariats, candidatures stream, contenu officiel.</p>
+          <p><code>/me</code> (action), <code>/it</code> (environnement), <code>/na</code> (narration visible sans pensée interne), <code>/hrp</code> (hors-RP). Missives in-RP à privilégier. Le <code>/roll</code> tranche les situations ambiguës sur demande du staff.</p>
+        </div>
+      </section>
+
+      <!-- THÈME 06 -->
+      <section id="sec-rp-06" class="rule-section">
+        <div class="theme-header">
+          <span class="theme-number">Thème 06</span>
+          <h2 class="theme-title">Techniques sensibles</h2>
+          <p class="theme-desc">Genjutsu, fuinjutsu, pupilles et transformations majeures.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 6.1 à 6.4</span>
+            <h3>DoJutsu, Genjutsu & Formes</h3>
+            <span class="badge-severity badge-severe">Sévère</span>
+            <span class="badge-tag-grey">#dojutsu</span>
           </div>
-          <h4>Conditions d'un RPK (Roleplay Kill)</h4>
-          <p>La mort définitive d'un personnage (RPK) nécessite la validation d'un dossier RP auprès du Staff ou de suivre les procédures strictes prévues lors des guerres et règlements de compte officiels. L'élimination gratuite d'un personnage sans justification RP solide est strictement sanctionnée.</p>
+          <p>Pupilles masquées irreconnaissables. Genjutsu / Fuinjutsu abusif pour WinRP = RPK immédiat.</p>
+          <p><strong>Transformations par bataille :</strong> Susano MS (2), Démon Poisson (2), Golem de Sang (4), Susano EMS (Illimité).</p>
+        </div>
+      </section>
+
+      <!-- THÈME 07 -->
+      <section id="sec-rp-07" class="rule-section">
+        <div class="theme-header">
+          <span class="theme-number">Thème 07</span>
+          <h2 class="theme-title">Politique & allégeance</h2>
+          <p class="theme-desc">Désertion, rébellion, traités et espionnage.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 7.1 à 7.6</span>
+            <h3>Trahisons, Rébellions & Traités</h3>
+            <span class="badge-severity badge-critique">Critique</span>
+            <span class="badge-tag-grey">#trahison</span>
+          </div>
+          <p>Ticket obligatoire pour trahison/désertion (Tokubetsu Jonin minimum). Ticket rébellion obligatoire pour Coup d'État (sinon wipe total). Interdiction de se battre pendant/juste après une scène diplomatique.</p>
+        </div>
+      </section>
+
+      <!-- SECTION SEPARATRICE : PARTIE HRP -->
+      <div class="section-divider" id="sec-hrp-01">
+        <span class="theme-number" style="font-size: 1rem;">PARTIE 02</span>
+        <h1 style="font-size: 2.2rem; font-weight: 900;">RÈGLEMENT HRP & PROCEDURES</h1>
+        <p class="theme-desc">Les règles hors-roleplay, tickets, comportement et administration.</p>
+      </div>
+
+      <section class="rule-section">
+        <div class="intro-box">
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            [Section Partie 02 - Les détails complets HRP de 01 à 10 et les Annexes Sanctions/Discord/Staff s'affichent selon le sommaire répertorié].
+          </p>
         </div>
       </section>
 
     </main>
   </div>
 
-  <script>
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-      item.addEventListener('click', function() {
-        navItems.forEach(i => i.classList.remove('active'));
-        this.classList.add('active');
-      });
-    });
-  </script>
 </body>
 </html>
