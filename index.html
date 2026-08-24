@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ORAJIN · Règlement Officiel</title>
+  <title>ARKAIA · Règlement Officiel</title>
   <style>
     :root {
       --bg-dark: #070709;
@@ -18,7 +18,7 @@
     html { scroll-behavior: smooth; }
     body { background-color: var(--bg-dark); color: #ffffff; overflow-x: hidden; }
 
-    /* Header */
+    /* Header Nav */
     .navbar {
       display: flex; justify-content: space-between; align-items: center;
       padding: 1.2rem 4rem; border-bottom: 1px solid var(--border-color);
@@ -26,233 +26,329 @@
     }
     .brand { display: flex; align-items: center; gap: 0.75rem; font-weight: 700; font-size: 0.8rem; letter-spacing: 1.5px; }
     .brand-icon { width: 22px; height: 22px; background: linear-gradient(135deg, #a855f7, #6b21a8); border-radius: 5px; box-shadow: 0 0 10px var(--accent-purple); }
-    .brand-title { color: #fff; }
-    .brand-subtitle { color: var(--text-muted); font-weight: 400; }
-    
-    .nav-links { display: flex; gap: 2.5rem; align-items: center; list-style: none; }
-    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: #fff; }
-    .btn-discord { background: linear-gradient(135deg, #a855f7, #7e22ce); color: #fff !important; padding: 0.55rem 1.2rem; border-radius: 6px; font-weight: 600; box-shadow: 0 0 15px var(--purple-glow); }
+    .btn-discord { background: linear-gradient(135deg, #a855f7, #7e22ce); color: #fff !important; padding: 0.55rem 1.2rem; border-radius: 6px; font-weight: 600; text-decoration: none; box-shadow: 0 0 15px var(--purple-glow); }
 
-    /* Hero */
-    .hero { max-width: 1100px; margin: 4rem auto 3rem auto; padding: 0 2rem; }
-    .pill-tag { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border-color); padding: 0.35rem 0.85rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 2.5rem; }
-    .pill-dot { width: 6px; height: 6px; background: var(--accent-purple); border-radius: 50%; box-shadow: 0 0 8px var(--accent-purple); }
-    
-    .hero-title {
-      font-size: 6rem; font-weight: 900; line-height: 0.9; letter-spacing: 1px;
-      background: linear-gradient(180deg, #ffffff 45%, var(--accent-purple) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .hero-subtitle { font-size: 2.8rem; color: var(--text-muted); font-weight: 300; letter-spacing: 4px; margin-top: 0.2rem; margin-bottom: 1.5rem; }
-    .hero-description { color: var(--text-muted); font-size: 1.05rem; max-width: 620px; line-height: 1.6; margin-bottom: 2.5rem; }
-    
-    .hero-buttons { display: flex; gap: 1rem; margin-bottom: 3rem; }
-    .btn-main { background: linear-gradient(135deg, var(--accent-purple), #7e22ce); color: #fff; text-decoration: none; padding: 0.85rem 1.75rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 0 20px var(--purple-glow); }
-
-    .date-badge { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border-color); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.8rem; color: var(--text-muted); }
-    .date-badge strong { color: #fff; font-weight: 600; }
-
-    /* Layout */
+    /* Layout Content */
     .container { display: flex; max-width: 1400px; margin: 0 auto; border-top: 1px solid var(--border-color); }
     
-    /* Sidebar */
+    /* Sidebar Layout */
     .sidebar { width: 320px; padding: 2.5rem 1.5rem; border-right: 2px solid var(--accent-purple); height: calc(100vh - 70px); position: sticky; top: 70px; overflow-y: auto; }
-    .sidebar-block { margin-bottom: 2.5rem; }
-    .sidebar-header { display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 1.2rem; text-transform: uppercase; }
+    .sidebar-block { margin-bottom: 2rem; }
+    .sidebar-header { display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 1rem; text-transform: uppercase; }
 
     .nav-menu { display: flex; flex-direction: column; gap: 0.2rem; }
-    .nav-item { display: flex; align-items: center; gap: 0.85rem; color: var(--text-muted); text-decoration: none; padding: 0.55rem 0.85rem; font-size: 0.85rem; border-radius: 6px; transition: all 0.2s; }
+    .nav-item { display: flex; align-items: center; gap: 0.75rem; color: var(--text-muted); text-decoration: none; padding: 0.5rem 0.75rem; font-size: 0.82rem; border-radius: 6px; transition: all 0.2s; }
     .nav-item span { font-size: 0.75rem; font-weight: 600; color: #40404a; font-family: monospace; }
     .nav-item:hover { color: #fff; background: #121216; }
     .nav-item.active { background: #121217; color: #ffffff; border-left: 3px solid var(--accent-purple); box-shadow: -6px 0 16px -3px var(--purple-glow); }
     .nav-item.active span { color: var(--accent-purple); }
 
-    /* Main Content */
+    /* Main Content Area */
     .main-content { flex: 1; padding: 2.5rem 3.5rem; }
     .rule-section { margin-bottom: 4rem; scroll-margin-top: 90px; }
-    .content-header { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; color: var(--accent-purple); margin-bottom: 0.5rem; }
-    .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem; letter-spacing: -0.5px; }
 
-    .grid-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; margin-bottom: 2rem; }
-    .info-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.5rem; }
-    .card-tag { font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.75rem; }
-    .info-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; }
-    .info-card p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; }
+    /* Intro Boxes & Cards */
+    .intro-box { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 2rem; margin-bottom: 2rem; }
+    .severity-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+    .severity-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; }
+    .severity-card h4 { font-size: 0.9rem; margin-bottom: 0.4rem; }
+
+    /* Headers */
+    .section-divider { border-bottom: 2px solid var(--accent-purple); padding-bottom: 1rem; margin: 3rem 0 2rem 0; }
+    .theme-header { margin: 2.5rem 0 1.5rem 0; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-color); }
+    .theme-number { font-size: 0.8rem; font-weight: 700; color: var(--accent-purple); font-family: monospace; }
+    .theme-title { font-size: 1.6rem; font-weight: 800; margin-top: 0.2rem; }
+    .theme-desc { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem; }
 
     /* Rule Cards */
-    .rule-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.2rem; }
-    .rule-card-header { display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; }
-    .badge-art { background: rgba(255,255,255,0.05); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--border-color); }
-    .badge-severity { font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase; }
-    .badge-moderate { background: #9333ea; color: #fff; }
-    .badge-severe { background: #dc2626; color: #fff; }
-    .badge-critical { background: #7f1d1d; color: #fca5a5; border: 1px solid #ef4444; }
-    .badge-tag-grey { background: #18181b; color: var(--text-muted); font-size: 0.65rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase; }
+    .rule-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.75rem; margin-bottom: 1.5rem; }
+    .rule-card-header { display: flex; gap: 0.6rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; }
+    .badge-art { background: rgba(255,255,255,0.05); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 4px; border: 1px solid var(--border-color); }
+    .badge-severity { font-size: 0.65rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 4px; text-transform: uppercase; }
+    .badge-info { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+    .badge-moderee { background: rgba(249, 115, 22, 0.15); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.3); }
+    .badge-severe { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .badge-critique { background: rgba(220, 38, 38, 0.25); color: #ef4444; border: 1px solid rgba(220, 38, 38, 0.5); font-weight: 800; }
+    .badge-tag-grey { background: #141418; color: var(--text-muted); font-size: 0.65rem; font-weight: 600; padding: 0.25rem 0.6rem; border-radius: 4px; }
     
-    .rule-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; color: #fff; }
-    .rule-card p { color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; }
-    .rule-card ul { margin-left: 1.2rem; margin-top: 0.5rem; color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; }
+    .rule-card h3 { font-size: 1.3rem; font-weight: 800; color: #fff; }
+    .rule-card p { color: #d4d4d8; font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.8rem; }
+    .rule-card ul { margin-left: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.8rem; color: #d4d4d8; font-size: 0.95rem; line-height: 1.6; }
+    .rule-card ul li { margin-bottom: 0.3rem; }
+    .rule-card ul li::marker { color: var(--accent-purple); }
+
+    /* Critical Grid */
+    .critical-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .critical-item { background: rgba(220, 38, 38, 0.05); border: 1px solid rgba(220, 38, 38, 0.2); border-radius: 8px; padding: 1rem; }
+    .critical-item strong { color: #ef4444; font-size: 0.95rem; }
+    .critical-item p { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+    /* Staff Grid */
+    .staff-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .staff-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.2rem; }
+    .staff-card h4 { color: var(--accent-purple); font-size: 1rem; margin-bottom: 0.2rem; }
+    .staff-card .role-title { font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+    .staff-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; }
+
+    code { background: rgba(255,255,255,0.1); padding: 0.1rem 0.4rem; border-radius: 4px; font-family: monospace; font-size: 0.85rem; color: #e4e4e7; }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <header class="navbar">
     <div class="brand">
       <div class="brand-icon"></div>
-      <div><span class="brand-title">ORAJIN</span> <span class="brand-subtitle">· RÈGLEMENT</span></div>
+      <div><span style="color:#fff">ARKAIA</span> <span style="color:var(--text-muted);font-weight:400">· RÈGLEMENT COMMUNAUTAIRE</span></div>
     </div>
-    <ul class="nav-links">
-      <li><a href="#sec-00">Introduction</a></li>
-      <li><a href="#sec-01">RP</a></li>
-      <li><a href="#sec-06">HRP</a></li>
-      <li><a href="https://discord.gg/VdfxuBenZ" target="_blank" class="btn-discord">Discord ↗</a></li>
-    </ul>
+    <a href="https://discord.gg/VdfxuBenZ" target="_blank" class="btn-discord">Discord ↗</a>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="pill-tag"><span class="pill-dot"></span> RÈGLEMENT OFFICIEL</div>
-    <h1 class="hero-title">ORAJIN</h1>
-    <h2 class="hero-subtitle">· Règlement</h2>
-    <p class="hero-description">Le cadre complet de la communauté ORAJIN : règlement RP et HRP, procédures, scènes sensibles, sanctions. Une référence vivante, écrite pour être lue, citée et appliquée.</p>
-    <div class="hero-buttons">
-      <a href="#sec-00" class="btn-main">Commencer la lecture →</a>
-    </div>
-    <div class="date-badge"><span class="pill-dot"></span> DERNIÈRE MISE À JOUR <strong>2026</strong></div>
-  </section>
-
-  <!-- CONTAINER -->
   <div class="container">
     <aside class="sidebar">
+      
+      <!-- SOMMAIRE RP -->
       <div class="sidebar-block">
-        <div class="sidebar-header">Sommaire</div>
+        <div class="sidebar-header">Partie 01 · Règlement RP</div>
         <nav class="nav-menu">
-          <a href="#sec-00" class="nav-item active"><span>00</span> Introduction</a>
-          <a href="#sec-01" class="nav-item"><span>01</span> Cadre Général RP</a>
-          <a href="#sec-02" class="nav-item"><span>02</span> Équipement & Masques</a>
-          <a href="#sec-03" class="nav-item"><span>03</span> Captures & RPK</a>
-          <a href="#sec-04" class="nav-item"><span>04</span> Guerres & Territoires</a>
+          <a href="#sec-rp-08" class="nav-item"><span>08</span> Progression RP</a>
+          <a href="#sec-rp-09" class="nav-item"><span>09</span> Infiltration & règles diverses</a>
+          <a href="#sec-rp-10" class="nav-item"><span>10</span> Subjutsu</a>
         </nav>
       </div>
+
+      <!-- SOMMAIRE HRP -->
+      <div class="sidebar-block">
+        <div class="sidebar-header">Partie 02 · Règlement HRP</div>
+        <nav class="nav-menu">
+          <a href="#sec-hrp-02" class="nav-item"><span>02</span> Tickets & procédures</a>
+        </nav>
+      </div>
+
+      <!-- SOMMAIRE ANNEXES -->
+      <div class="sidebar-block">
+        <div class="sidebar-header">Annexes & Contacts</div>
+        <nav class="nav-menu">
+          <a href="#sec-annex-sanctions" class="nav-item"><span>→</span> Sanctions critiques</a>
+          <a href="#sec-annex-discord" class="nav-item"><span>→</span> Discord</a>
+          <a href="#sec-annex-staff" class="nav-item"><span>→</span> Staff & contacts</a>
+        </nav>
+      </div>
+
     </aside>
 
     <main class="main-content">
-      <!-- 00 INTRODUCTION -->
-      <section id="sec-00" class="rule-section">
-        <div class="content-header">00 · INTRODUCTION</div>
-        <h2 class="section-title">Le cadre de la communauté.</h2>
-        <div class="grid-cards">
-          <div class="info-card">
-            <div class="card-tag">Principes généraux</div>
-            <h3>Jouer la scène en priorité</h3>
-            <p>Une scène RP commencée doit obligatoirement être jouée jusqu'à sa fin. Toute contestation d'incohérence ou de manquement au règlement doit se faire **après la scène** via un ticket Discord, preuves à l'appui.</p>
-          </div>
-          <div class="info-card">
-            <div class="card-tag">Sanctions & Preuves</div>
-            <h3>Charge de la preuve</h3>
-            <p>Tout signalement d'infraction doit être accompagné de preuves vidéo claires (avec le son) ou de captures intégrales d'écran. Les preuves altérées ne seront pas prises en compte.</p>
-          </div>
+
+      <!-- PARTIE 02 : RÈGLEMENT HRP HEADER -->
+      <div class="section-divider" id="sec-hrp-02">
+        <span class="theme-number" style="font-size: 1rem;">PARTIE 02</span>
+        <h1 style="font-size: 2.2rem; font-weight: 900;">RÈGLEMENT HRP & PROCÉDURES</h1>
+        <p class="theme-desc">Les règles hors-roleplay, tickets, comportement et administration.</p>
+      </div>
+
+      <!-- THÈME 02 HRP -->
+      <section class="rule-section">
+        <div class="theme-header">
+          <span class="theme-number">Thème 02</span>
+          <h2 class="theme-title">Tickets & procédures</h2>
+          <p class="theme-desc">Toute demande officielle doit passer par la bonne procédure, avec preuves et contexte.</p>
         </div>
-      </section>
-
-      <!-- 01 CADRE GÉNÉRAL RP -->
-      <section id="sec-01" class="rule-section">
-        <div class="content-header">01 · CADRE GÉNÉRAL RP</div>
-        <h2 class="section-title">Règles de base du Roleplay.</h2>
-
-        <div class="rule-card">
-          <div class="rule-card-header">
-            <span class="badge-art">Art. 1.1</span>
-            <span class="badge-severity badge-moderate">Modérée</span>
-            <span class="badge-tag-grey">#AFK</span>
-            <span class="badge-tag-grey">#PRESENCE</span>
-          </div>
-          <h4>AFK et absence en RP</h4>
-          <p>Il est strictement interdit de se mettre AFK (Away From Keyboard) dans une zone active ou au milieu d'une scène RP. Tout joueur AFK dans une zone neutre ou ennemie reste entièrement vulnérable aux interactions, attaques ou captures.</p>
-        </div>
-
-        <div class="rule-card">
-          <div class="rule-card-header">
-            <span class="badge-art">Art. 1.2</span>
-            <span class="badge-severity badge-severe">Sévère</span>
-            <span class="badge-tag-grey">#BASTION</span>
-            <span class="badge-tag-grey">#INVASION</span>
-          </div>
-          <h4>Bastion et zones protégées</h4>
-          <p>Les bastions et villages ninjas disposent d'un statut de sécurité élevé. Il est interdit de s'y introduire sans raison RP valable ou sans déclaration officielle/autorisation. Toute intrusion non déclarée sera traitée comme une provocation ou un acte hostile direct.</p>
-        </div>
-
-        <div class="rule-card">
-          <div class="rule-card-header">
-            <span class="badge-art">Art. 1.3</span>
-            <span class="badge-severity badge-moderate">Modérée</span>
-            <span class="badge-tag-grey">#FEAR_RP</span>
-            <span class="badge-tag-grey">#PAIN_RP</span>
-          </div>
-          <h4>Fear RP et Pain RP</h4>
-          <p>Votre personnage doit exprimer la peur face à une menace de mort évidente (ex: être encerclé par plusieurs ennemis armés) et simuler la douleur en cas de blessure grave. Minimiser les blessures pour prendre la fuite de manière irréaliste est interdit.</p>
-        </div>
-      </section>
-
-      <!-- 02 ÉQUIPEMENT & MASQUES -->
-      <section id="sec-02" class="rule-section">
-        <div class="content-header">02 · ÉQUIPEMENT & MASQUES</div>
-        <h2 class="section-title">Masquage et Reconnaissance.</h2>
 
         <div class="rule-card">
           <div class="rule-card-header">
             <span class="badge-art">Art. 2.1</span>
-            <span class="badge-severity badge-moderate">Modérée</span>
-            <span class="badge-tag-grey">#MASQUES</span>
-            <span class="badge-tag-grey">#ANONYMAT</span>
+            <h3>Création de ticket</h3>
+            <span class="badge-severity badge-info">Info</span>
+            <span class="badge-tag-grey">#ticket</span>
           </div>
-          <h4>Anonymat et Masques</h4>
-          <p>Le port d'un masque dissimule entièrement l'identité visuelle de votre personnage. Un joueur masqué ne peut pas être reconnu à sa voix ou son pseudonyme par d'autres joueurs, sauf si son identité a été révélée au préalable lors d'une scène explicite.</p>
+          <p>Passe par ticket pour : contestations, déwarn, déban, changement de village, plaintes ou demandes admin.</p>
+          <p>Utilise la bonne catégorie : problème, plainte, partenariat, candidature staff ou autres. Chaque demande doit être claire, détaillée et respectueuse.</p>
+          <p>Pour toute plainte, des preuves sont obligatoires :</p>
+          <ul>
+            <li>Captures d'écran.</li>
+            <li>Vidéos.</li>
+            <li>Éléments datés.</li>
+          </ul>
+          <p>Il est strictement interdit d'ouvrir un ticket inutile, de troll en ticket, de spam ou de faire perdre du temps au staff.</p>
         </div>
 
         <div class="rule-card">
           <div class="rule-card-header">
             <span class="badge-art">Art. 2.2</span>
-            <span class="badge-severity badge-severe">Sévère</span>
-            <span class="badge-tag-grey">#LOOT</span>
-            <span class="badge-tag-grey">#INVENTAIRE</span>
+            <h3>Contestations</h3>
+            <span class="badge-severity badge-moderee">Modérée</span>
+            <span class="badge-tag-grey">#ticket</span>
           </div>
-          <h4>Vol d'équipement et dépouillement</h4>
-          <p>Le pillage complet du stuff d'un joueur K.O. est limité par la cohérence de la scène. Il est interdit de dépouiller un joueur de manière irraisonnée sans justification RP préalable.</p>
+          <p>Toute contestation d'une décision staff passe par un ticket ou par le support vocal si cela est demandé.</p>
+          <p>Contacter un membre du staff en message privé pour contester une sanction est strictement interdit.</p>
         </div>
-      </section>
-
-      <!-- 03 CAPTURES & RPK -->
-      <section id="sec-03" class="rule-section">
-        <div class="content-header">03 · CAPTURES & RPK</div>
-        <h2 class="section-title">Morts permanentes et Captures.</h2>
 
         <div class="rule-card">
           <div class="rule-card-header">
-            <span class="badge-art">Art. 3.1</span>
-            <span class="badge-severity badge-critical">Critique</span>
-            <span class="badge-tag-grey">#RPK</span>
-            <span class="badge-tag-grey">#MORT_PERMANENTE</span>
+            <span class="badge-art">Art. 2.3</span>
+            <h3>Déwarn et déban</h3>
+            <span class="badge-severity badge-moderee">Modérée</span>
+            <span class="badge-tag-grey">#sanction</span>
           </div>
-          <h4>Conditions d'un RPK (Roleplay Kill)</h4>
-          <p>La mort définitive d'un personnage (RPK) nécessite la validation d'un dossier RP auprès du Staff ou de suivre les procédures strictes prévues lors des guerres et règlements de compte officiels. L'élimination gratuite d'un personnage sans justification RP solide est strictement sanctionnée.</p>
+          <p>Toute demande de déwarn ou de déban passe obligatoirement par un ticket.</p>
+          <p>La sanction doit dater d'au moins un à deux mois selon sa gravité. Une demande trop récente ne sera pas examinée. Toute requête transmise en message privé sera refusée.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 2.4</span>
+            <h3>Ticket admin et scènes sensibles</h3>
+            <span class="badge-severity badge-severe">Sévère</span>
+            <span class="badge-tag-grey">#staff</span>
+          </div>
+          <p>Quand un ticket admin est validé, la scène doit être effectuée dans le délai imparti. Si la scène n'est pas jouée à temps, le ticket peut être fermé.</p>
+          <p>Indique toujours dans ton ticket : ton nom RP, le contexte précis et la demande exacte.</p>
+          <p>Scènes demandant une validation préalable :</p>
+          <ul>
+            <li>Scène RPK.</li>
+            <li>Capture très sensible.</li>
+            <li>Attaque de village.</li>
+            <li>Scène exceptionnelle demandant un arbitrage staff.</li>
+          </ul>
+          <p>Les Keto, RPK et autres scènes à trame doivent obligatoirement être joués sous la surveillance directe du staff.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-card-header">
+            <span class="badge-art">Art. 2.5</span>
+            <h3>Changement de village</h3>
+            <span class="badge-severity badge-info">Info</span>
+            <span class="badge-tag-grey">#village</span>
+          </div>
+          <p>Tout changement de village doit obligatoirement passer par la procédure officielle via ticket.</p>
+        </div>
+      </section>
+
+      <!-- ANNEXES : SANCTIONS CRITIQUES -->
+      <section id="sec-annex-sanctions" class="rule-section">
+        <div class="section-divider">
+          <span class="theme-number" style="font-size: 1rem;">ANNEXE 01</span>
+          <h1 style="font-size: 2.2rem; font-weight: 900; color: #ef4444;">SANCTIONS CRITIQUES</h1>
+          <p class="theme-desc">Les règles suivantes exposent à des sanctions lourdes : wipe, ban temporaire ou bannissement définitif. Aucune justification RP ne couvre un abus listé ici.</p>
+        </div>
+
+        <div class="critical-grid">
+          <div class="critical-item">
+            <strong>Art. 3.9 · RPK</strong>
+            <p>Règlement RP · Captures & scènes sensibles</p>
+          </div>
+          <div class="critical-item">
+            <strong>Art. 3.10 · Vols d'armes uniques / Dojutsu</strong>
+            <p>Règlement RP · Captures & scènes sensibles</p>
+          </div>
+          <div class="critical-item">
+            <strong>Art. 7.2 · Coup d'état</strong>
+            <p>Règlement RP · Politique & allégeance</p>
+          </div>
+          <div class="critical-item">
+            <strong>Art. 9.1 · Infiltration</strong>
+            <p>Règlement RP · Infiltration & règles diverses</p>
+          </div>
+          <div class="critical-item">
+            <strong>Art. 9.9 · RP à caractère sexuel</strong>
+            <p>Règlement RP · Infiltration & règles diverses</p>
+          </div>
+          <div class="critical-item">
+            <strong>Art. 1.4 · Sanctions lourdes & abus HRP</strong>
+            <p>Règlement HRP · Principes de base</p>
+          </div>
+          <div class="critical-item">
+            <strong>Art. 5.3 · Multi-comptes</strong>
+            <p>Règlement HRP · Identité RP & comptes</p>
+          </div>
+          <div class="critical-item">
+            <strong>Art. 6.2 · Discrimination & harcèlement</strong>
+            <p>Règlement HRP · Comportement HRP</p>
+          </div>
+          <div class="critical-item">
+            <strong>Art. 6.3 · Publicité non autorisée</strong>
+            <p>Règlement HRP · Comportement HRP</p>
+          </div>
+          <div class="critical-item">
+            <strong>Art. 7.1 · Échange & transaction HRP</strong>
+            <p>Règlement HRP · Échanges & transferts</p>
+          </div>
+          <div class="critical-item">
+            <strong>Art. 8.2 · Contournement de sanctions</strong>
+            <p>Règlement HRP · Bugs & contournements</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ANNEXES : DISCORD -->
+      <section id="sec-annex-discord" class="rule-section">
+        <div class="intro-box" style="border-color: rgba(168, 85, 247, 0.4);">
+          <span class="theme-number">REJOINS LA COMMUNAUTÉ</span>
+          <h2 style="font-size: 1.8rem; font-weight: 800; margin: 0.4rem 0 0.8rem 0;">Discord ARKAIA</h2>
+          <p style="color: #d4d4d8; line-height: 1.6; margin-bottom: 1.5rem;">
+            Tickets, annonces, suivi RP, déclarations de guerre, candidatures staff. Tout passe par Discord, c'est l'endroit officiel pour contacter l'équipe et la communauté.
+          </p>
+          <a href="https://discord.gg/VdfxuBenZ" target="_blank" class="btn-discord" style="display: inline-block; margin-bottom: 2rem;">Ouvrir le Discord ↗</a>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 0.8rem; border-radius: 6px;">
+              <strong style="color: #fff; font-size: 0.85rem;">#tickets</strong>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">Ouvrir un ticket (contestation, déban, plainte)</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 0.8rem; border-radius: 6px;">
+              <strong style="color: #fff; font-size: 0.85rem;">#annonces</strong>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">Annonces officielles & mises à jour du règlement</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 0.8rem; border-radius: 6px;">
+              <strong style="color: #fff; font-size: 0.85rem;">#suivi-rp</strong>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">Suivi RP, missions, validations</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 0.8rem; border-radius: 6px;">
+              <strong style="color: #fff; font-size: 0.85rem;">#vocaux-rp</strong>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">Vocaux RP, staff connectés</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ANNEXES : STAFF & ROLES -->
+      <section id="sec-annex-staff" class="rule-section">
+        <div class="theme-header">
+          <span class="theme-number">ANNEXE 02</span>
+          <h2 class="theme-title">Staff & Rôles</h2>
+          <p class="theme-desc">Qui contacter, et quand. Contacte l'équipe pour un besoin réel, pas pour gagner du confort. Tickets, DM et !pm ne sont pas des outils de raccourci.</p>
+        </div>
+
+        <div class="staff-grid">
+          <div class="staff-card">
+            <h4>Administration</h4>
+            <div class="role-title">Gérant Serveur & Gérant Staffs</div>
+            <p>Décisions stratégiques, sanctions lourdes, validations majeures.</p>
+          </div>
+          <div class="staff-card">
+            <h4>Modération</h4>
+            <div class="role-title">Modérateurs</div>
+            <p>Spectate RPK, arbitrage de scène, tickets courants.</p>
+          </div>
+          <div class="staff-card">
+            <h4>Animation</h4>
+            <div class="role-title">Animateurs</div>
+            <p>Événements spéciaux, tournois, scénarios validés.</p>
+          </div>
+          <div class="staff-card">
+            <h4>Suivi RP</h4>
+            <div class="role-title">Maître de Jeu</div>
+            <p>Validation des apprentissages, suivi des artefacts et pupilles.</p>
+          </div>
+          <div class="staff-card">
+            <h4>Communication</h4>
+            <div class="role-title">Community Manager</div>
+            <p>Partenariats, candidatures stream, contenu officiel.</p>
+          </div>
         </div>
       </section>
 
     </main>
   </div>
 
-  <script>
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-      item.addEventListener('click', function() {
-        navItems.forEach(i => i.classList.remove('active'));
-        this.classList.add('active');
-      });
-    });
-  </script>
 </body>
 </html>
-
