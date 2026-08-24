@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Règlement - Orajin RP</title>
+  <title>ORAJIN · Règlement - Orajin Community</title>
   <style>
     :root {
       --bg-main: #09090b;
@@ -11,11 +11,19 @@
       --border: #27272a;
       --text-main: #f4f4f5;
       --text-muted: #a1a1aa;
+      
+      /* Couleur d'accentuation VIOLETTE à la place du jaune */
+      --accent: #a855f7;
+      --accent-hover: #c084fc;
+      
+      /* Badges de gravité (Modérée passe en VIOLET) */
       --info: #1e3a8a; --info-text: #93c5fd;
-      --warn: #854d0e; --warn-text: #fde047;
+      --warn: #581c87; --warn-text: #e9d5ff; /* Violet */
       --severe: #9a3412; --severe-text: #fdba74;
       --critical: #991b1b; --critical-text: #fca5a5;
     }
+
+    * { box-sizing: border-box; }
 
     body {
       background-color: var(--bg-main);
@@ -25,6 +33,7 @@
       display: flex;
     }
 
+    /* Menu latéral */
     nav {
       width: 280px;
       height: 100vh;
@@ -32,28 +41,69 @@
       top: 0;
       border-right: 1px solid var(--border);
       padding: 24px;
-      box-sizing: border-box;
       overflow-y: auto;
+      background-color: var(--bg-main);
     }
 
-    nav h2 { font-size: 1.1rem; margin-bottom: 16px; color: var(--text-main); }
-    nav ul { list-style: none; padding: 0; margin: 0; }
-    nav li { margin-bottom: 10px; }
-    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
-    nav a:hover { color: var(--text-main); }
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
 
+    nav h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin: 20px 0 10px 0;
+    }
+
+    nav ul { list-style: none; padding: 0; margin: 0; }
+    nav li { margin-bottom: 8px; }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--accent); }
+
+    /* Zone principale */
     main {
       flex: 1;
       padding: 40px;
-      max-width: 900px;
+      max-width: 960px;
     }
 
+    .header-section {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+
+    .header-section h1 {
+      font-size: 2rem;
+      margin: 0 0 10px 0;
+      color: var(--text-main);
+    }
+
+    .header-section p {
+      color: var(--text-muted);
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    /* Carte de Règle */
     .rule-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .rule-header {
@@ -64,47 +114,97 @@
       flex-wrap: wrap;
     }
 
-    .rule-id { font-weight: bold; color: var(--text-muted); }
+    .rule-id {
+      font-weight: 700;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
 
+    /* Badges */
     .badge {
       font-size: 0.75rem;
       padding: 3px 8px;
       border-radius: 4px;
       font-weight: 600;
-      text-transform: uppercase;
     }
+
     .badge-info { background: var(--info); color: var(--info-text); }
-    .badge-warn { background: var(--warn); color: var(--warn-text); }
+    .badge-warn { background: var(--warn); color: var(--warn-text); } /* Violet */
     .badge-severe { background: var(--severe); color: var(--severe-text); }
     .badge-critical { background: var(--critical); color: var(--critical-text); }
-    .tag { background: #27272a; color: var(--text-muted); }
+    .tag { background: #27272a; color: var(--accent); }
 
-    h1 { border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-    h3 { margin: 0 0 10px 0; font-size: 1.2rem; }
-    p { color: #d4d4d8; line-height: 1.5; margin-bottom: 10px; }
+    h2.section-title {
+      font-size: 1.4rem;
+      color: var(--accent);
+      margin: 40px 0 20px 0;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    h3 { margin: 0 0 10px 0; font-size: 1.1rem; }
+    p { color: #d4d4d8; line-height: 1.6; margin: 0 0 10px 0; font-size: 0.95rem; }
     ul { margin: 0 0 10px 0; padding-left: 20px; color: #d4d4d8; }
-    li { margin-bottom: 4px; }
+    li { margin-bottom: 4px; line-height: 1.5; }
+
+    /* Tableaux */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px;
+      text-align: left;
+    }
+
+    th { background: #27272a; color: var(--text-main); }
+    td { background: var(--bg-card); color: #d4d4d8; }
   </style>
 </head>
 <body>
 
+  <!-- Menu de gauche -->
   <nav>
-    <h2>Sommaire</h2>
+    <div class="brand">ORAJIN · RÈGLEMENT</div>
+    
+    <h2>Introduction</h2>
     <ul>
-      <li><a href="#intro">00 · Introduction</a></li>
-      <li><a href="#rp-cadre">01 · Cadre Général RP</a></li>
+      <li><a href="#intro">00 · Cadre Général</a></li>
+    </ul>
+
+    <h2>Règlement RP</h2>
+    <ul>
+      <li><a href="#rp-cadre">01 · Cadre Général</a></li>
       <li><a href="#rp-equipement">02 · Équipement & Masques</a></li>
-      <li><a href="#rp-captures">03 · Captures & RPK</a></li>
+      <li><a href="#rp-captures">03 · Captures & Scènes</a></li>
+    </ul>
+
+    <h2>Règlement HRP</h2>
+    <ul>
+      <li><a href="#hrp-base">01 · Principes HRP</a></li>
     </ul>
   </nav>
 
+  <!-- Contenu Principal -->
   <main>
-    <h1 id="intro">00 · Introduction</h1>
-    <div class="rule-card">
-      <p><strong>Principe fondamental :</strong> Tu joues d'abord la scène RP, tu contestes ensuite en ticket avec les preuves nécessaires. Aucun arrêt de scène n'est toléré en cours de jeu.</p>
+    
+    <div class="header-section">
+      <h1>ORAJIN · Règlement officiel</h1>
+      <p>Le cadre complet de la communauté ORAJIN : règlement RP et HRP, procédures, scènes sensibles et sanctions. Une référence écrite pour être lue, citée et appliquée.</p>
     </div>
 
-    <h1 id="rp-cadre">01 · Cadre Général RP</h1>
+    <!-- INTRODUCTION -->
+    <h2 class="section-title" id="intro">00 · Introduction</h2>
+    <div class="rule-card">
+      <p><strong>Règle d'or :</strong> Tu joues d'abord la scène, tu contestes ensuite avec la bonne procédure et les preuves nécessaires. Toute contestation se fait après la scène, jamais pendant.</p>
+    </div>
+
+    <!-- PARTIE RP -->
+    <h2 class="section-title" id="rp-cadre">01 · Règlement RP - Cadre Général</h2>
 
     <article class="rule-card">
       <div class="rule-header">
@@ -115,7 +215,7 @@
       </div>
       <h3>AFK et présence</h3>
       <p>Il est interdit de rester AFK volontairement dans une scène RP pour éviter une interaction ou une conséquence.</p>
-      <p>Si tu dois t'absenter, préviens les joueurs concernés et quitte la scène proprement si possible. Un AFK abusif peut entraîner l'annulation de la scène et une sanction.</p>
+      <p>Si tu dois t'absenter : préviens les joueurs concernés et quitte la scène correctement. Un AFK abusif peut entraîner l'annulation de la scène ou une sanction staff.</p>
     </article>
 
     <article class="rule-card">
@@ -125,8 +225,8 @@
         <span class="badge tag">#bataille</span>
         <span class="badge tag">#bastion</span>
       </div>
-      <h3>Bastion et zones ennemies</h3>
-      <p>Le bastion correspond au camp, village ou point fort ennemi. L'accès ou l'attaque d'un bastion est strictement encadré. La récupération d'un bastion se règle uniquement par négociation ou par guerre préparée.</p>
+      <h3>Bastion</h3>
+      <p>Le bastion est considéré comme le camp adverse : il correspond au village ou point fort du camp ennemi. Sa capture est obligatoire avant toute revendication. La récupération d'un bastion se règle uniquement par négociation ou guerre préparée.</p>
     </article>
 
     <article class="rule-card">
@@ -136,8 +236,8 @@
         <span class="badge tag">#frontière</span>
         <span class="badge tag">#RPK</span>
       </div>
-      <h3>Frontières et annonces</h3>
-      <p>Entrer dans un territoire ou pays ennemi impose une annonce RP claire (ex: <i>/na Un ninja entre au Pays...</i>). L'absence d'annonce expose à une sanction HRP. Une fois en territoire adverse, tu te trouves sous un risque RPK constant.</p>
+      <h3>Bastions, pays et frontières</h3>
+      <p>Un bastion est une zone protégée et sensible. Entrer dans un pays ennemi impose une annonce /na RP. L'absence d'annonce expose à une sanction HRP. Une fois en pays adverse, tu es sous un risque RPK constant.</p>
     </article>
 
     <article class="rule-card">
@@ -147,7 +247,7 @@
         <span class="badge tag">#fairplay</span>
       </div>
       <h3>Fairplay</h3>
-      <p>Le fairplay consiste à garantir une expérience de jeu agréable à tous. S'acharner sur un joueur alors que l'écart de puissance ou de nombre est écrasant constitue un manque de fairplay sanctionnable.</p>
+      <p>Le fairplay consiste à prendre en compte l'expérience des autres joueurs. S'acharner sur un joueur alors que l'écart de nombre ou de puissance est écrasant est interdit.</p>
     </article>
 
     <article class="rule-card">
@@ -156,8 +256,8 @@
         <span class="badge badge-warn">Modérée</span>
         <span class="badge tag">#fairplay</span>
       </div>
-      <h3>WinRP / LoseRP</h3>
-      <p>Le WinRP (vouloir gagner à tout prix) est interdit. Tu dois accepter une défaite cohérente (LoseRP) quand la situation, l'environnement ou tes blessures le demandent.</p>
+      <h3>WinRP et LoseRP</h3>
+      <p>Le WinRP consiste à vouloir gagner à tout prix. Le LoseRP consiste à accepter une défaite cohérente. Tu ne dois jamais ignorer ton environnement ou tes blessures pour forcer une victoire.</p>
     </article>
 
     <article class="rule-card">
@@ -167,7 +267,7 @@
         <span class="badge tag">#fairplay</span>
       </div>
       <h3>ForceRP</h3>
-      <p>Il est interdit d'imposer une action, un passé ou une situation à un autre joueur sans lui laisser de possibilité de réponse RP logique.</p>
+      <p>Le ForceRP consiste à imposer une action, un passé ou une situation à d'autres joueurs sans leur laisser de vraie réponse RP.</p>
     </article>
 
     <article class="rule-card">
@@ -178,20 +278,11 @@
         <span class="badge tag">#HRP</span>
       </div>
       <h3>Métagaming</h3>
-      <p>Utiliser en RP des informations obtenues en HRP (Discord, stream, HUD, etc.) est strictement interdit. Une preuve RP valable en jeu est obligatoire pour exploiter une information.</p>
+      <p>Le métagaming consiste à utiliser en RP des informations obtenues hors RP (Discord, stream, HUD). Il faut une preuve RP crédible pour exploiter une information.</p>
     </article>
 
-    <article class="rule-card">
-      <div class="rule-header">
-        <span class="rule-id">Art. 1.10</span>
-        <span class="badge badge-severe">Sévère</span>
-        <span class="badge tag">#powergaming</span>
-      </div>
-      <h3>Powergaming</h3>
-      <p>Réaliser des actions physiquement ou mécaniquement impossibles/incohérentes avec l'univers du jeu est interdit.</p>
-    </article>
-
-    <h1 id="rp-equipement">02 · Équipement & Masques</h1>
+    <!-- PARTIE ÉQUIPEMENT -->
+    <h2 class="section-title" id="rp-equipement">02 · Équipement & Identification</h2>
 
     <article class="rule-card">
       <div class="rule-header">
@@ -200,7 +291,7 @@
         <span class="badge tag">#équipement</span>
       </div>
       <h3>Armes et objets uniques</h3>
-      <p>Il est interdit de dissimuler une arme unique pour éviter d'être identifié. Toute arme unique ou artefact en ta possession doit rester visible.</p>
+      <p>Il est strictement interdit de dissimuler une arme unique pour éviter d'être identifié. Toute arme en ta possession doit rester visible en permanence.</p>
     </article>
 
     <article class="rule-card">
@@ -209,11 +300,12 @@
         <span class="badge badge-warn">Modérée</span>
         <span class="badge tag">#identité</span>
       </div>
-      <h3>Masques et anonymat</h3>
-      <p>Un joueur portant un masque est impossible à reconnaître. Exceptions : s'il donne son nom, ou s'il porte une arme unique / artefact de clan distinctif. Revoir la même tenue plus tard ne permet pas de déduire une identité.</p>
+      <h3>Masques</h3>
+      <p>Une personne portant un masque est considérée comme impossible à reconnaître. Exception : si elle donne son nom ou porte une arme unique/artefact de clan.</p>
     </article>
 
-    <h1 id="rp-captures">03 · Captures & RPK</h1>
+    <!-- PARTIE CAPTURES -->
+    <h2 class="section-title" id="rp-captures">03 · Captures & Scènes Sensibles</h2>
 
     <article class="rule-card">
       <div class="rule-header">
@@ -221,8 +313,8 @@
         <span class="badge badge-warn">Modérée</span>
         <span class="badge tag">#capture</span>
       </div>
-      <h3>Captures et emprisonnement</h3>
-      <p>Capturer ou assommer un joueur doit reposer sur une raison RP valable. La cible doit conserver une opportunité de réagir et une porte de sortie RP.</p>
+      <h3>Assommer et capturer</h3>
+      <p>Assommer ou capturer un joueur doit se faire dans le respect du RP et de manière logique. Le joueur capturé doit conserver une possibilité de réagir.</p>
     </article>
 
     <article class="rule-card">
@@ -230,13 +322,46 @@
         <span class="rule-id">Art. 3.2</span>
         <span class="badge badge-severe">Sévère</span>
         <span class="badge tag">#capture</span>
-        <span class="badge tag">#RPK</span>
+        <span class="badge tag">#grade</span>
       </div>
-      <h3>Cadre des captures</h3>
-      <p>Pour des raisons d'équité, il est interdit de déployer plus de 3 personnes d'un rang égal ou supérieur à celui de la cible lors d'une capture ciblée. Menacer directement sous la gorge pendant un combat actif est interdit (uniquement sur une cible au sol/hors d'état).</p>
+      <h3>Captures hors batailles</h3>
+      <p>Lors d'une capture ciblée, il est interdit de déployer plus de 3 personnes d'un rang égal ou supérieur à celui de la cible.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Grade du joueur</th>
+            <th>Peut capturer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Chunin</td>
+            <td>Chunin → Tokubetsu Jonin</td>
+          </tr>
+          <tr>
+            <td>Jonin</td>
+            <td>Jonin → Sannin</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+    <!-- HRP -->
+    <h2 class="section-title" id="hrp-base">01 · Règlement HRP</h2>
+
+    <article class="rule-card">
+      <div class="rule-header">
+        <span class="rule-id">Art. 4.1</span>
+        <span class="badge badge-critical">Critique</span>
+        <span class="badge tag">#comportement</span>
+      </div>
+      <h3>Comportement Hors-RP</h3>
+      <p>Le respect est obligatoire sur l'ensemble des plateformes d'Orajin (Discord, jeu, vocal). Les insultes HRP, le harcèlement et la haine entraînent un bannissement immédiat.</p>
     </article>
 
   </main>
 
 </body>
 </html>
+
